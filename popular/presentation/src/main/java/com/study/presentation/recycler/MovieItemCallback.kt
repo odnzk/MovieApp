@@ -1,7 +1,7 @@
 package com.study.presentation.recycler
 
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
-import com.study.domain.Movie
+import com.study.domain.model.Movie
 
 class MovieItemCallback : ItemCallback<Movie>() {
     override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean = oldItem.id == newItem.id

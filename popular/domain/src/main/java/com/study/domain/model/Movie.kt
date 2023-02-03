@@ -1,4 +1,4 @@
-package com.study.domain
+package com.study.domain.model
 
 data class Movie(
     val id: Long,

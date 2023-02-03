@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.RequestManager
-import com.study.domain.Movie
+import com.study.domain.model.Movie
 import com.study.presentation.databinding.ItemMovieBinding
 
 class MovieAdapter : ListAdapter<Movie, MovieViewHolder>(MovieItemCallback()) {

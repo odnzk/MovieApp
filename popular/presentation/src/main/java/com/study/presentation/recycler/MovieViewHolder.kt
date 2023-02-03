@@ -2,7 +2,7 @@ package com.study.presentation.recycler
 
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
-import com.study.domain.Movie
+import com.study.domain.model.Movie
 import com.study.presentation.databinding.ItemMovieBinding
 import com.study.presentation.util.loadWithLoadingState
 
