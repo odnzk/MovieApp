@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">MovieApp</string>
     <string name="popular_screen_title">Популярные</string>
     <string name="starred_screen_title">Избранное</string>
 
     <string name="error_connection_lost">Произошла ошибка при загрузке данных, проверьте подключение к сети</string>
     <string name="try_again">Повторить</string>
+
+<!--    content description-->
+    <string name="cd_movie_poster">Картинка фильма</string>
+    <string name="cd_to_favorites">Добавить в избранное</string>
 </resources>
