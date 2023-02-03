@@ -11,4 +11,7 @@ java {
 dependencies {
     // coroutines
     implementation Deps.coroutinesCore
+    implementation Deps.retrofit
+
+    implementation project(path: ':core:common')
 }
