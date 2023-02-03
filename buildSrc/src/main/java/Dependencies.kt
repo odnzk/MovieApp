@@ -19,6 +19,7 @@ object Versions {
     const val coroutinesVersion = "1.6.4"
     const val datastoreVersion = "1.0.0"
     const val glideVersion = "4.14.2"
+    const val retrofitVersion = "2.9.0"
 }
 
 object Deps {
@@ -71,5 +72,7 @@ object Deps {
 
     const val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
     const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glideVersion}"
+
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
 }
 

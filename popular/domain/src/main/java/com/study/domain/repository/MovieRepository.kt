@@ -4,5 +4,7 @@ import com.study.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
-    fun getMovies(): Flow<List<Movie>>
+    fun getTopMovies(): Flow<List<Movie>>
+
+    suspend fun getMovieById(id: Int): Movie
 }
