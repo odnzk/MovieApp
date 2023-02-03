@@ -10,6 +10,11 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/popular" />
+            <option value="$PROJECT_DIR$/popular/data" />
+            <option value="$PROJECT_DIR$/popular/domain" />
+            <option value="$PROJECT_DIR$/popular/presentation" />
           </set>
         </option>
       </GradleProjectSettings>
