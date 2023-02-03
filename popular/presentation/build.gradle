@@ -43,4 +43,8 @@ dependencies {
     androidTestImplementation Deps.espressoCore
 
     implementation project(path: ':core:ui')
+    implementation project(path: ':popular:domain')
+
+    implementation Deps.glide
+    implementation Deps.glideCompiler
 }

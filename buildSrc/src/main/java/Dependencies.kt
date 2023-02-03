@@ -17,7 +17,8 @@ object Versions {
     const val navigationVersion = "2.5.3"
     const val activityVersion = "1.6.1"
     const val coroutinesVersion = "1.6.4"
-    const val datastore_version = "1.0.0"
+    const val datastoreVersion = "1.0.0"
+    const val glideVersion = "4.14.2"
 }
 
 object Deps {
@@ -64,8 +65,11 @@ object Deps {
     const val coroutinesAndroid =
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesVersion}"
 
-    const val datastore = "androidx.datastore:datastore-preferences:${Versions.datastore_version}"
+    const val datastore = "androidx.datastore:datastore-preferences:${Versions.datastoreVersion}"
 
     const val workmanagerRuntime = "androidx.work:work-runtime-ktx:${Versions.workVersion}"
+
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
+    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glideVersion}"
 }
 
