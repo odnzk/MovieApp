@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular_screen_title">Популярные</string>
+    <string name="starred_screen_title">Избранное</string>
+
+    <string name="error_connection_lost">Произошла ошибка при загрузке данных, проверьте подключение к сети</string>
+    <string name="btn_try_again">Повторить</string>
+</resources>
