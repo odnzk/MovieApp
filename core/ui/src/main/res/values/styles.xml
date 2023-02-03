@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ContentLoadingProgressBar.Primary" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateTint">@color/main_blue</item>
+    </style>
+
+    <style name="ButtonTryAgain" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@color/main_blue</item>
+        <item name="android:text">@string/try_again</item>
+        <item name="cornerRadius">100dp</item>
+    </style>
+</resources>
