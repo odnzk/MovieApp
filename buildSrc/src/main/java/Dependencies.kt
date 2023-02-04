@@ -76,6 +76,7 @@ object Deps {
     const val coil = "io.coil-kt:coil:${Versions.coilVersion}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttpVersion}"
+    const val retrofitGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}"
     const val moshi = "com.squareup.moshi:moshi-kotlin:${Versions.moshiVersion}"
     const val retrofitWithMoshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofitVersion}"
 }

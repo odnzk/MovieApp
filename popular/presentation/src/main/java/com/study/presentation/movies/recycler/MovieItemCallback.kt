@@ -8,6 +8,7 @@ class MovieItemCallback : ItemCallback<Movie>() {
 
     override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean =
         oldItem.title == newItem.title
-                && oldItem.description == newItem.description
+                && oldItem.genre == newItem.genre
+                && oldItem.year == newItem.year
                 && oldItem.imageUrl == newItem.imageUrl
 }

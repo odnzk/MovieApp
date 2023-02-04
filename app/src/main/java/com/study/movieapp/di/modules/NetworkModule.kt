@@ -9,7 +9,7 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -25,7 +25,8 @@ object NetworkModule {
         return Retrofit.Builder()
             .baseUrl(MOVIES_BASE_URL)
             .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create()).build()
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
 
     @Provides

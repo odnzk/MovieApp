@@ -12,7 +12,7 @@ class MovieRepositoryImpl @Inject constructor(
 ) : MovieRepository {
 
     override suspend fun getTopMovies(): List<Movie> {
-        return api.getTopMovies().toMovies()
+        return api.getTopMovies().films.toMovies()
     }
 
     override suspend fun getMovieById(id: Int): Movie {

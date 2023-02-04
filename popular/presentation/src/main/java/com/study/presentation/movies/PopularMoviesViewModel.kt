@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.study.common.State
 import com.study.domain.model.Movie
 import com.study.domain.usecase.MovieUsecases
+import com.study.presentation.movies.recycler.PopularMoviesEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -32,4 +33,9 @@ class PopularMoviesViewModel @Inject constructor(
         }
     }
 
+    fun onEvent(event: PopularMoviesEvent) = viewModelScope.launch {
+        when (event) {
+            PopularMoviesEvent.TryAgain -> loadData()
+        }
+    }
 }

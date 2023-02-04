@@ -14,14 +14,13 @@ class MovieViewHolder(
     fun bind(movie: Movie) {
         with(binding) {
             tvTitle.text = movie.title
-            val genres: String = movie.genres.joinToString(separator = ", ")
+            val genres: String = movie.genre
             tvDescription.text = root.context.getString(
                 com.study.ui.R.string.rv_genre_with_year,
                 genres,
                 movie.year
             )
-            ivFavorite.loadImage(movie.imageUrl)
-
+            ivMovieImage.loadImage(movie.imageUrl)
             onMovieClick?.let { onMovieClick ->
                 root.setOnClickListener { onMovieClick(movie.id) }
             }
