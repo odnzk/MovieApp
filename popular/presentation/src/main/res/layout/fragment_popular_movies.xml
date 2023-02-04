@@ -17,6 +17,9 @@
         tools:listitem="@layout/item_movie"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <include
+        layout="@layout/state_not_found" />
+
     <include layout="@layout/state_loading" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.study.presentation.movies
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,11 +18,9 @@ import com.study.presentation.databinding.FragmentPopularMoviesBinding
 import com.study.presentation.movies.recycler.MovieAdapter
 import com.study.presentation.movies.recycler.SimpleVerticalDividerItemDecorator
 import com.study.presentation.navigation.fromMoviesToDetailedMovie
-import com.study.ui.R
+import com.study.ui.*
 import com.study.ui.databinding.StateLoadingBinding
-import com.study.ui.errorOccurred
-import com.study.ui.loadingFinished
-import com.study.ui.loadingStarted
+import com.study.ui.databinding.StateNotFoundBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -34,11 +33,16 @@ class PopularMoviesFragment : Fragment(), SearchFragment {
     private var _loadingBinding: StateLoadingBinding? = null
     private val loadingBinding: StateLoadingBinding get() = _loadingBinding!!
 
+    private var _notFoundBinding: StateNotFoundBinding? = null
+    private val notFoundBinding: StateNotFoundBinding get() = _notFoundBinding!!
+
     private val moviesAdapter = MovieAdapter()
     private val viewModel by viewModels<PopularMoviesViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        notFoundBinding.hide()
         initRecyclerView()
         observeMovies()
     }
@@ -85,6 +89,7 @@ class PopularMoviesFragment : Fragment(), SearchFragment {
     ): View {
         _binding = FragmentPopularMoviesBinding.inflate(inflater, container, false)
         _loadingBinding = StateLoadingBinding.bind(binding.root)
+        _notFoundBinding = StateNotFoundBinding.bind(binding.root)
 
         setupAdapter()
         return binding.root
@@ -92,6 +97,7 @@ class PopularMoviesFragment : Fragment(), SearchFragment {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        _notFoundBinding = null
         _loadingBinding = null
         _binding = null
     }
@@ -112,8 +118,12 @@ class PopularMoviesFragment : Fragment(), SearchFragment {
                     movie.title.lowercase().contains(query.lowercase())
                 }
                 moviesAdapter.submitList(filtered)
+                if (filtered.isEmpty()) {
+                    notFoundBinding.show()
+                }
             }
         } else {
+            notFoundBinding.hide()
             moviesAdapter.submitList(movies)
         }
     }

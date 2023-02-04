@@ -8,12 +8,11 @@
         <item name="android:indeterminateTint">@color/main_blue</item>
     </style>
 
-    <style name="ButtonTryAgain" parent="Widget.MaterialComponents.Button">
+    <style name="ButtonPrimary" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:backgroundTint">@color/main_blue</item>
         <item name="textAllCaps">false</item>
-        <item name="android:text">@string/try_again</item>
         <item name="cornerRadius">100dp</item>
     </style>
 
