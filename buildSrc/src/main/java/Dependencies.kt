@@ -18,7 +18,7 @@ object Versions {
     const val activityVersion = "1.6.1"
     const val coroutinesVersion = "1.6.4"
     const val datastoreVersion = "1.0.0"
-    const val glideVersion = "4.14.2"
+    const val glideVersion = "4.9.0"
     const val retrofitVersion = "2.9.0"
     const val okHttpVersion = "4.10.0"
 }

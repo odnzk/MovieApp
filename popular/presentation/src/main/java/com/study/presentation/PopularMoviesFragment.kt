@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
 import com.study.presentation.databinding.FragmentPopularMoviesBinding
 import com.study.presentation.recycler.MovieAdapter
 
@@ -17,7 +16,7 @@ class PopularMoviesFragment : Fragment() {
 
     private fun setupAdapter() {
         moviesAdapter.run {
-            glide = Glide.with(this@PopularMoviesFragment)
+//            glide = Glide.with(this@PopularMoviesFragment)
             onMovieClick = {
                 // todo navigate to detailed screen
             }
