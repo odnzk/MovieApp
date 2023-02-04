@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -11,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.study.common.State
 import com.study.domain.model.DetailedMovie
+import com.study.presentation.CanChangeToolbarStyle
 import com.study.presentation.databinding.FragmentDetailedMovieBinding
 import com.study.ui.databinding.StateLoadingBinding
 import com.study.ui.errorOccurred
@@ -21,8 +23,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+
 @AndroidEntryPoint
-class DetailedMovieFragment : Fragment() {
+class DetailedMovieFragment : Fragment(), CanChangeToolbarStyle {
     private var _binding: FragmentDetailedMovieBinding? = null
     private val binding: FragmentDetailedMovieBinding get() = _binding!!
 
@@ -59,7 +62,7 @@ class DetailedMovieFragment : Fragment() {
         with(binding) {
             tvTitle.text = movie.title
             tvDescription.text = movie.description
-            tvCountries.text = movie.genres.joinToString(separator = ", ")
+            tvCountries.text = movie.countries.joinToString(separator = ", ")
             tvGenres.text = movie.genres.joinToString(separator = ", ")
             ivMovieImage.loadImage(movie.imageUrl)
         }
@@ -72,6 +75,9 @@ class DetailedMovieFragment : Fragment() {
     ): View {
         _binding = FragmentDetailedMovieBinding.inflate(inflater, container, false)
         _loadingBinding = StateLoadingBinding.bind(binding.root)
+
+        changeToolbarStyle()
+
         return binding.root
     }
 
@@ -79,5 +85,14 @@ class DetailedMovieFragment : Fragment() {
         super.onDestroyView()
         _loadingBinding = null
         _binding = null
+        returnToolbarStyle()
+    }
+
+    override fun changeToolbarStyle() {
+        (activity as? AppCompatActivity)?.supportActionBar?.hide()
+    }
+
+    override fun returnToolbarStyle() {
+        (activity as? AppCompatActivity)?.supportActionBar?.hide()
     }
 }

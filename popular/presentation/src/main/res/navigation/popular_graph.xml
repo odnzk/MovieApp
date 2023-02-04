@@ -23,6 +23,6 @@
     <fragment
         android:id="@+id/detailedMovieFragment"
         android:name="com.study.presentation.detailed_movie.DetailedMovieFragment"
-        android:label="DetailedMovieFragment"
+        android:label=""
         tools:layout="@layout/fragment_detailed_movie" />
 </navigation>
