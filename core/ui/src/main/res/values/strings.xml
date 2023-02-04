@@ -3,6 +3,7 @@
     <string name="app_name">MovieApp</string>
     <string name="popular_screen_title">Популярные</string>
     <string name="favorites_screen_title">Избранное</string>
+    <string name="search">Поиск</string>
 
     <string name="rv_genre_with_year">%1$s (%2$d)</string>
     <string name="rv_genres">Жанры:</string>
