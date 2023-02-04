@@ -1,4 +1,4 @@
-package com.study.presentation
+package com.study.presentation.movies
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.study.presentation.databinding.FragmentPopularMoviesBinding
-import com.study.presentation.recycler.MovieAdapter
+import com.study.presentation.movies.recycler.MovieAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

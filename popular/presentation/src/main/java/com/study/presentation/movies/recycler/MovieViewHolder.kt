@@ -1,4 +1,4 @@
-package com.study.presentation.recycler
+package com.study.presentation.movies.recycler
 
 import androidx.recyclerview.widget.RecyclerView
 import com.study.domain.model.Movie

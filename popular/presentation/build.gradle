@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.dagger.hilt.android'
 }
 
@@ -49,10 +50,14 @@ dependencies {
     implementation project(path: ':popular:domain')
 
     implementation Deps.coil
+
     implementation Deps.lifecycleViewmodel
     implementation Deps.fragment
 
     implementation Deps.hilt
     kapt Deps.hiltCompiler
+
+    implementation Deps.navigationUi
+    implementation Deps.navigationFragment
 
 }
