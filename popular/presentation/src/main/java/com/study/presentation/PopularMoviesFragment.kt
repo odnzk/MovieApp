@@ -16,7 +16,6 @@ class PopularMoviesFragment : Fragment() {
 
     private fun setupAdapter() {
         moviesAdapter.run {
-//            glide = Glide.with(this@PopularMoviesFragment)
             onMovieClick = {
                 // todo navigate to detailed screen
             }

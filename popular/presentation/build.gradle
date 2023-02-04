@@ -46,6 +46,7 @@ dependencies {
     implementation project(path: ':core:common')
     implementation project(path: ':popular:domain')
 
+    implementation Deps.coil
     implementation Deps.lifecycleViewmodel
     implementation Deps.fragment
 

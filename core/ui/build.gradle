@@ -44,4 +44,6 @@ dependencies {
 
     implementation project(path: ':popular:domain')
 
+    implementation Deps.coil
+
 }

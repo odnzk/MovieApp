@@ -19,6 +19,7 @@ object Versions {
     const val coroutinesVersion = "1.6.4"
     const val datastoreVersion = "1.0.0"
     const val glideVersion = "4.9.0"
+    const val coilVersion = "2.2.2"
     const val retrofitVersion = "2.9.0"
     const val okHttpVersion = "4.10.0"
 }
@@ -71,8 +72,9 @@ object Deps {
 
     const val workmanagerRuntime = "androidx.work:work-runtime-ktx:${Versions.workVersion}"
 
-    const val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
-    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glideVersion}"
+    //    const val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
+//    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glideVersion}"
+    const val coil = "io.coil-kt:coil:${Versions.coilVersion}"
 
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttpVersion}"
