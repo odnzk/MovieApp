@@ -1,4 +1,4 @@
-package com.study.presentation.movies.recycler
+package com.study.ui.recycler
 
 import android.graphics.Rect
 import android.view.View

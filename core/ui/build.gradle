@@ -39,6 +39,7 @@ dependencies {
     implementation Deps.appCompat
     implementation Deps.material
     implementation Deps.constraintLayout
+    implementation project(path: ':core:common')
     testImplementation Deps.junitTest
     androidTestImplementation Deps.junit
     androidTestImplementation Deps.espressoCore

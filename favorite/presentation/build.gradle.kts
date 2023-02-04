@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -31,6 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -40,4 +45,13 @@ dependencies {
     testImplementation(Deps.junitTest)
     androidTestImplementation(Deps.junit)
     androidTestImplementation(Deps.espressoCore)
+
+    implementation(project("path" to ":core:common"))
+    implementation(project("path" to ":core:ui"))
+
+    implementation(Deps.navigationFragment)
+    implementation(Deps.navigationUi)
+
+    implementation(Deps.hilt)
+    kapt(Deps.hiltCompiler)
 }
