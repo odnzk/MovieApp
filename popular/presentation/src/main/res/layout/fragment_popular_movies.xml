@@ -7,8 +7,6 @@
     android:padding="@dimen/screen_paddings"
     android:theme="@style/Theme.MovieApp">
 
-    <include layout="@layout/state_loading" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_popular"
         android:layout_width="0dp"
@@ -18,5 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:listitem="@layout/item_movie"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <include layout="@layout/state_loading" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

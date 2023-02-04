@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.MovieApp">
+
+    <ImageView
+        android:id="@+id/iv_movie_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/cd_movie_poster"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/screen_detaild_paddings"
+        android:layout_marginTop="20dp"
+        android:textAppearance="@style/TextAppearance.MovieApp.Title1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_movie_image"
+        tools:text="Изгой-один: Звёздные войны" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/screen_detaild_paddings"
+        android:layout_marginTop="16dp"
+        android:textAppearance="@style/TextAppearance.MovieApp.Regular1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        tools:text="Сопротивление собирает отряд для выполнения особой миссии - надо выкрасть чертежи самого совершенного и мертоносного оружия Империи. Не всем суждено вернуться домой, но герои готовы к этому, ведь на кону судьба Галактики" />
+
+    <TextView
+        android:id="@+id/tv_genres_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/screen_detaild_paddings"
+        android:layout_marginTop="16dp"
+        android:textAppearance="@style/TextAppearance.MovieApp.Regular1"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_description"
+        tools:text="@string/rv_genres" />
+
+    <TextView
+        android:id="@+id/tv_genres"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="@dimen/screen_detaild_paddings"
+        android:textAppearance="@style/TextAppearance.MovieApp.Regular1"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_genres_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_genres_title"
+        tools:text="Жанры: фантастика, приключения" />
+
+    <TextView
+        android:id="@+id/tv_countries_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/screen_detaild_paddings"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextAppearance.MovieApp.Regular1"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_genres"
+        tools:text="@string/rv_countries" />
+
+    <TextView
+        android:id="@+id/tv_countries"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="@dimen/screen_detaild_paddings"
+        android:textAppearance="@style/TextAppearance.MovieApp.Regular1"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_countries_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_countries_title"
+        tools:text="США" />
+
+
+    <include layout="@layout/state_loading" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

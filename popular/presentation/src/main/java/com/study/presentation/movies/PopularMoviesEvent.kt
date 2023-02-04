@@ -1,4 +1,4 @@
-package com.study.presentation.movies.recycler
+package com.study.presentation.movies
 
 sealed interface PopularMoviesEvent {
     object TryAgain : PopularMoviesEvent

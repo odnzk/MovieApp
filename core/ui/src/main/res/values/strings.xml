@@ -5,6 +5,8 @@
     <string name="favorites_screen_title">Избранное</string>
 
     <string name="rv_genre_with_year">%1$s (%2$d)</string>
+    <string name="rv_genres">Жанры:</string>
+    <string name="rv_countries">Страны:</string>
 
     <string name="try_again">Повторить</string>
 
@@ -12,6 +14,7 @@
     <string name="error_general">Произошла ошибка при загрузке данных</string>
     <string name="error_network">Произошла ошибка при загрузке данных, код ошибки: %1$d</string>
     <string name="error_unknown">Неизвестная ошибка, перезагрузите приложение</string>
+    <string name="error_movie_id">Фильм не найден</string>
     <string name="error_connection_lost">Произошла ошибка при загрузке данных, проверьте подключение к сети</string>
 
     <!--    content description-->

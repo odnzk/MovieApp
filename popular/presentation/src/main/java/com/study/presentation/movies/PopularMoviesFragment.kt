@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.study.common.State
 import com.study.presentation.databinding.FragmentPopularMoviesBinding
 import com.study.presentation.movies.recycler.MovieAdapter
-import com.study.presentation.movies.recycler.PopularMoviesEvent
 import com.study.presentation.movies.recycler.SimpleVerticalDividerItemDecorator
 import com.study.presentation.navigation.fromMoviesToDetailedMovie
 import com.study.ui.R
@@ -40,8 +39,8 @@ class PopularMoviesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeMovies()
         initRecyclerView()
+        observeMovies()
     }
 
     private fun initRecyclerView() {
