@@ -6,15 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.study.common.State
 import com.study.presentation.databinding.FragmentFavoritesBinding
-import com.study.ui.SearchFragment
+import com.study.ui.*
 import com.study.ui.databinding.StateLoadingBinding
 import com.study.ui.databinding.StateNotFoundBinding
-import com.study.ui.hide
 import com.study.ui.recycler.MovieAdapter
 import com.study.ui.recycler.SimpleVerticalDividerItemDecorator
-import com.study.ui.searchMovies
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 class FavoritesFragment : Fragment(), SearchFragment {
@@ -50,7 +54,26 @@ class FavoritesFragment : Fragment(), SearchFragment {
     }
 
     private fun observeFavoriteMovies() {
-
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.movies.collectLatest { state ->
+                    when (state) {
+                        is State.Loading -> loadingBinding.loadingStarted()
+                        is State.Error -> state.error?.let { error ->
+                            loadingBinding.errorOccurred(error) {
+                                viewModel.onEvent(FavoriteMoviesEvent.TryAgain)
+                            }
+                        }
+                        is State.Success -> {
+                            state.data?.let { movies ->
+                                loadingBinding.loadingFinished()
+                                moviesAdapter.submitList(movies)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun initRecyclerView() {

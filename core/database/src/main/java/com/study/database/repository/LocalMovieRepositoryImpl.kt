@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class LocalMovieRepositoryImpl @Inject constructor(private val dao: MovieDao) :
-    com.study.domain.repository.LocalMovieRepository {
+    com.study.domain.repository.FavoriteMovieRepository {
     override suspend fun add(vararg movie: Movie) {
         dao.insert(*movie.toEntities())
     }

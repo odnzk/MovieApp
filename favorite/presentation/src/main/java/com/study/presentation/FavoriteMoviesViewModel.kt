@@ -4,16 +4,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.study.common.State
 import com.study.domain.model.Movie
+import com.study.domain.usecase.FavoriteMoviesUsecases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 @HiltViewModel
 class FavoriteMoviesViewModel @Inject constructor(
-//    private val movieUsecases: MovieUsecases // todo change to getMoviesUseCase
+    private val favoriteMoviesUsecases: FavoriteMoviesUsecases
 ) : ViewModel() {
 
     private var _movies: MutableStateFlow<State<List<Movie>>> =
@@ -25,9 +28,10 @@ class FavoriteMoviesViewModel @Inject constructor(
     }
 
     private fun loadData() = viewModelScope.launch {
-//        movieUsecases.getTopMovies().collectLatest { moviesResource ->
-//            _movies.value = moviesResource
-//        }
+        favoriteMoviesUsecases.getAllFavoriteMovies().distinctUntilChanged()
+            .collectLatest { repoMovies ->
+                _movies.value = State.Success(repoMovies)
+            }
     }
 
     fun onEvent(event: FavoriteMoviesEvent) = viewModelScope.launch {
