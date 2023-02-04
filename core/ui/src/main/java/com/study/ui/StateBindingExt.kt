@@ -2,6 +2,7 @@ package com.study.ui
 
 import androidx.core.view.isVisible
 import com.study.domain.exceptions.ConnectionLostException
+import com.study.domain.exceptions.InvalidMovieIdException
 import com.study.domain.exceptions.NetworkException
 import com.study.ui.databinding.StateLoadingBinding
 
@@ -31,6 +32,7 @@ fun StateLoadingBinding.errorOccurred(error: Throwable, tryAgainAction: () -> Un
             ivError.isVisible = true
             root.context.getString(R.string.error_network, error.code)
         }
+        is InvalidMovieIdException -> root.context.getString(R.string.error_movie_id)
         else -> root.context.getString(R.string.error_unknown)
     }
     tvError.text = message

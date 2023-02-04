@@ -20,7 +20,7 @@ fun MovieDetailedDto.toDetailedMovie(): DetailedMovie =
         id = kinopoiskId,
         imageUrl = posterUrl,
         title = nameRu.capitalize(),
-        genres = genres.map { it.genre.capitalize() },
+        genres = genres.map { it.genre },
         countries = countries.map { it.country.capitalize() },
         description = description.capitalize(),
     )

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/state_loading_paddings"
     android:theme="@style/Theme.MovieApp"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
@@ -34,8 +33,9 @@
         android:id="@+id/tv_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
+        android:paddingHorizontal="40dp"
         android:textAppearance="@style/TextAppearance.MovieApp.Regular1"
         android:textColor="@color/main_blue"
         app:layout_constraintBottom_toTopOf="@id/btn_try_again"

@@ -57,8 +57,6 @@ dependencies {
     implementation Deps.okHttp
     implementation Deps.retrofit
     implementation Deps.retrofitGson
-    //    implementation Deps.moshi
-//    implementation Deps.retrofitWithMoshi
 
     implementation Deps.navigationUi
     implementation Deps.navigationFragment

@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface MoviesApi {
 
-    @GET("/api/v2.2/films/top/{movieId}")
+    @GET("/api/v2.2/films/{movieId}")
     suspend fun getMovieById(@Path("movieId") id: Int): MovieDetailedDto
 
     @GET("/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS")
