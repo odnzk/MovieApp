@@ -14,7 +14,12 @@ class MovieViewHolder(
     fun bind(movie: Movie) {
         with(binding) {
             tvTitle.text = movie.title
-            tvDescription.text = movie.description
+            val genres: String = movie.genres.joinToString(separator = ", ")
+            tvDescription.text = root.context.getString(
+                com.study.ui.R.string.rv_genre_with_year,
+                genres,
+                movie.year
+            )
             ivFavorite.loadImage(movie.imageUrl)
 
             onMovieClick?.let { onMovieClick ->
