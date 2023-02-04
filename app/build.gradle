@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -40,4 +42,21 @@ dependencies {
     testImplementation Deps.junitTest
     androidTestImplementation Deps.junit
     androidTestImplementation Deps.espressoCore
+
+    implementation project(path: ':core:ui')
+    implementation project(path: ':popular:data')
+    implementation project(path: ':popular:domain')
+    implementation project(path: ':popular:presentation')
+
+    implementation Deps.hilt
+    kapt Deps.hiltCompiler
+
+    implementation Deps.okHttp
+    implementation Deps.moshi
+    implementation Deps.retrofit
+    implementation Deps.retrofitWithMoshi
+}
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
 }

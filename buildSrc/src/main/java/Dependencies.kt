@@ -17,7 +17,12 @@ object Versions {
     const val navigationVersion = "2.5.3"
     const val activityVersion = "1.6.1"
     const val coroutinesVersion = "1.6.4"
-    const val datastore_version = "1.0.0"
+    const val datastoreVersion = "1.0.0"
+    const val glideVersion = "4.9.0"
+    const val coilVersion = "2.2.2"
+    const val retrofitVersion = "2.9.0"
+    const val okHttpVersion = "4.10.0"
+    const val moshiVersion = "1.14.0"
 }
 
 object Deps {
@@ -64,8 +69,14 @@ object Deps {
     const val coroutinesAndroid =
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesVersion}"
 
-    const val datastore = "androidx.datastore:datastore-preferences:${Versions.datastore_version}"
+    const val datastore = "androidx.datastore:datastore-preferences:${Versions.datastoreVersion}"
 
     const val workmanagerRuntime = "androidx.work:work-runtime-ktx:${Versions.workVersion}"
+
+    const val coil = "io.coil-kt:coil:${Versions.coilVersion}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
+    const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttpVersion}"
+    const val moshi = "com.squareup.moshi:moshi-kotlin:${Versions.moshiVersion}"
+    const val retrofitWithMoshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofitVersion}"
 }
 

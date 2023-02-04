@@ -2,19 +2,18 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id 'com.google.dagger.hilt.android'
 }
 
 android {
-    namespace 'com.study.presentation'
-    compileSdk 33
+    namespace = "com.study.ui"
+    compileSdk = 33
 
     defaultConfig {
-        minSdk 27
-        targetSdk 33
+        minSdk = 27
+        targetSdk = 33
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -28,9 +27,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "1.8"
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
 }
@@ -44,15 +43,8 @@ dependencies {
     androidTestImplementation Deps.junit
     androidTestImplementation Deps.espressoCore
 
-    implementation project(path: ':core:ui')
-    implementation project(path: ':core:common')
     implementation project(path: ':popular:domain')
 
     implementation Deps.coil
-    implementation Deps.lifecycleViewmodel
-    implementation Deps.fragment
-
-    implementation Deps.hilt
-    kapt Deps.hiltCompiler
 
 }

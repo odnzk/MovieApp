@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="screen_paddings">16dp</dimen>
+    <dimen name="state_loading_paddings">24dp</dimen>
+    <dimen name="recycler_view_item_padding">15dp</dimen>
+    <dimen name="recycler_view_item_radius">15dp</dimen>
+    <dimen name="recycler_view_item_image_height">63dp</dimen>
+    <dimen name="recycler_view_item_image_width">40dp</dimen>
+</resources>
