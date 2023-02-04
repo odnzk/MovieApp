@@ -1,8 +1,8 @@
-package com.study.presentation.movies.recycler
+package com.study.ui.recycler
 
 import androidx.recyclerview.widget.RecyclerView
 import com.study.domain.model.Movie
-import com.study.presentation.databinding.ItemMovieBinding
+import com.study.ui.databinding.ItemMovieBinding
 import com.study.ui.loadImage
 
 class MovieViewHolder(
@@ -20,7 +20,7 @@ class MovieViewHolder(
                 genres,
                 movie.year
             )
-            ivMovieImage.loadImage(movie.imageUrl)
+            movie.imageUrl?.let { ivMovieImage.loadImage(it) }
             onMovieClick?.let { onMovieClick ->
                 root.setOnClickListener { onMovieClick(movie.id) }
             }

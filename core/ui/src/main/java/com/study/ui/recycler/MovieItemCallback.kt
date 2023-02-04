@@ -1,4 +1,4 @@
-package com.study.presentation.movies.recycler
+package com.study.ui.recycler
 
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import com.study.domain.model.Movie

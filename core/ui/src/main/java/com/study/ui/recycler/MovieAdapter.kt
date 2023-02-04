@@ -1,10 +1,10 @@
-package com.study.presentation.movies.recycler
+package com.study.ui.recycler
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.study.domain.model.Movie
-import com.study.presentation.databinding.ItemMovieBinding
+import com.study.ui.databinding.ItemMovieBinding
 
 class MovieAdapter : ListAdapter<Movie, MovieViewHolder>(MovieItemCallback()) {
 var onMovieClick: ((Int) -> Unit)? = null

@@ -1,7 +1,6 @@
 package com.study.presentation.movies
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,15 +11,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.study.common.SearchFragment
 import com.study.common.State
 import com.study.presentation.databinding.FragmentPopularMoviesBinding
-import com.study.presentation.movies.recycler.MovieAdapter
-import com.study.presentation.movies.recycler.SimpleVerticalDividerItemDecorator
 import com.study.presentation.navigation.fromMoviesToDetailedMovie
 import com.study.ui.*
 import com.study.ui.databinding.StateLoadingBinding
 import com.study.ui.databinding.StateNotFoundBinding
+import com.study.ui.recycler.MovieAdapter
+import com.study.ui.recycler.SimpleVerticalDividerItemDecorator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -37,7 +35,22 @@ class PopularMoviesFragment : Fragment(), SearchFragment {
     private val notFoundBinding: StateNotFoundBinding get() = _notFoundBinding!!
 
     private val moviesAdapter = MovieAdapter()
+
     private val viewModel by viewModels<PopularMoviesViewModel>()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentPopularMoviesBinding.inflate(inflater, container, false)
+        _loadingBinding = StateLoadingBinding.bind(binding.root)
+        _notFoundBinding = StateNotFoundBinding.bind(binding.root)
+
+        setupAdapter()
+        return binding.root
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,9 +60,15 @@ class PopularMoviesFragment : Fragment(), SearchFragment {
         observeMovies()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _notFoundBinding = null
+        _loadingBinding = null
+        _binding = null
+    }
+
     private fun initRecyclerView() {
         with(binding.rvPopular) {
-            // todo item vidiver to int??
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(
                 SimpleVerticalDividerItemDecorator
@@ -82,25 +101,6 @@ class PopularMoviesFragment : Fragment(), SearchFragment {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentPopularMoviesBinding.inflate(inflater, container, false)
-        _loadingBinding = StateLoadingBinding.bind(binding.root)
-        _notFoundBinding = StateNotFoundBinding.bind(binding.root)
-
-        setupAdapter()
-        return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _notFoundBinding = null
-        _loadingBinding = null
-        _binding = null
-    }
 
     private fun setupAdapter() {
         moviesAdapter.run {
@@ -111,20 +111,29 @@ class PopularMoviesFragment : Fragment(), SearchFragment {
     }
 
     override fun onSearchQueryChanged(query: String?) {
-        val movies = viewModel.movies.value.data
-        if (!query.isNullOrBlank()) {
-            movies?.let {
-                val filtered = movies.filter { movie ->
-                    movie.title.lowercase().contains(query.lowercase())
-                }
-                moviesAdapter.submitList(filtered)
-                if (filtered.isEmpty()) {
-                    notFoundBinding.show()
-                }
+        viewModel.movies.value.data?.let { movies ->
+            searchMovies(
+                query = query,
+                notFoundBinding = notFoundBinding,
+                movies = movies
+            ) { resultList ->
+                moviesAdapter.submitList(resultList)
             }
-        } else {
-            notFoundBinding.hide()
-            moviesAdapter.submitList(movies)
         }
+//        val movies = viewModel.movies.value.data
+//        if (!query.isNullOrBlank()) {
+//            movies?.let {
+//                val filtered = movies.filter { movie ->
+//                    movie.title.lowercase().contains(query.lowercase())
+//                }
+//                moviesAdapter.submitList(filtered)
+//                if (filtered.isEmpty()) {
+//                    notFoundBinding.show()
+//                }
+//            }
+//        } else {
+//            notFoundBinding.hide()
+//            moviesAdapter.submitList(movies)
+//        }
     }
 }
