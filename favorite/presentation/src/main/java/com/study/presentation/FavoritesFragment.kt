@@ -5,16 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.study.presentation.databinding.FragmentFavoritesBinding
+import com.study.ui.SearchFragment
 import com.study.ui.databinding.StateLoadingBinding
 import com.study.ui.databinding.StateNotFoundBinding
 import com.study.ui.hide
 import com.study.ui.recycler.MovieAdapter
 import com.study.ui.recycler.SimpleVerticalDividerItemDecorator
+import com.study.ui.searchMovies
 
 
-class FavoritesFragment : Fragment() {
+class FavoritesFragment : Fragment(), SearchFragment {
     private var _binding: FragmentFavoritesBinding? = null
     private val binding: FragmentFavoritesBinding get() = _binding!!
 
@@ -25,6 +28,7 @@ class FavoritesFragment : Fragment() {
     private val notFoundBinding: StateNotFoundBinding get() = _notFoundBinding!!
 
     private val moviesAdapter = MovieAdapter()
+    private val viewModel by viewModels<FavoriteMoviesViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,5 +72,17 @@ class FavoritesFragment : Fragment() {
         _notFoundBinding = null
         _loadingBinding = null
         _binding = null
+    }
+
+    override fun onSearchQueryChanged(query: String?) {
+        viewModel.movies.value.data?.let { movies ->
+            searchMovies(
+                query = query,
+                notFoundBinding = notFoundBinding,
+                movies = movies
+            ) { resultList ->
+                moviesAdapter.submitList(resultList)
+            }
+        }
     }
 }

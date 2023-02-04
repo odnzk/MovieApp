@@ -11,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.study.ui.SearchFragment
 import com.study.common.State
 import com.study.presentation.databinding.FragmentPopularMoviesBinding
 import com.study.presentation.navigation.fromMoviesToDetailedMovie
@@ -112,20 +111,29 @@ class PopularMoviesFragment : Fragment(), SearchFragment {
     }
 
     override fun onSearchQueryChanged(query: String?) {
-        val movies = viewModel.movies.value.data
-        if (!query.isNullOrBlank()) {
-            movies?.let {
-                val filtered = movies.filter { movie ->
-                    movie.title.lowercase().contains(query.lowercase())
-                }
-                moviesAdapter.submitList(filtered)
-                if (filtered.isEmpty()) {
-                    notFoundBinding.show()
-                }
+        viewModel.movies.value.data?.let { movies ->
+            searchMovies(
+                query = query,
+                notFoundBinding = notFoundBinding,
+                movies = movies
+            ) { resultList ->
+                moviesAdapter.submitList(resultList)
             }
-        } else {
-            notFoundBinding.hide()
-            moviesAdapter.submitList(movies)
         }
+//        val movies = viewModel.movies.value.data
+//        if (!query.isNullOrBlank()) {
+//            movies?.let {
+//                val filtered = movies.filter { movie ->
+//                    movie.title.lowercase().contains(query.lowercase())
+//                }
+//                moviesAdapter.submitList(filtered)
+//                if (filtered.isEmpty()) {
+//                    notFoundBinding.show()
+//                }
+//            }
+//        } else {
+//            notFoundBinding.hide()
+//            moviesAdapter.submitList(movies)
+//        }
     }
 }

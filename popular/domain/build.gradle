@@ -10,8 +10,8 @@ java {
 
 dependencies {
     implementation project(path: ':core:common')
+    implementation project(path: ':core:domain')
 
     implementation Deps.coroutinesCore
     implementation Deps.retrofit
-    implementation project(path: ':core:domain')
 }
