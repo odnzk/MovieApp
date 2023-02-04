@@ -5,4 +5,5 @@
     app:startDestination="@id/popular_graph">
 
     <include app:graph="@navigation/popular_graph" />
+    <include app:graph="@navigation/favorites_graph" />
 </navigation>

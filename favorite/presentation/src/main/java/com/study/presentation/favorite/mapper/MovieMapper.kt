@@ -1,9 +1,9 @@
-package com.study.presentation.mapper
+package com.study.presentation.favorite.mapper
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import com.study.domain.model.Movie
-import com.study.presentation.model.UiMovie
+import com.study.presentation.favorite.model.UiMovie
 import java.io.ByteArrayOutputStream
 
 internal fun List<Movie>.toUiMovies(): List<UiMovie> = map { it.toUiMovie() }

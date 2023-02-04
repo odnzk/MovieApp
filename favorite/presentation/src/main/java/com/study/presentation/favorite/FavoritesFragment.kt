@@ -1,4 +1,4 @@
-package com.study.presentation
+package com.study.presentation.favorite
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -67,7 +67,7 @@ class FavoritesFragment : Fragment(), SearchFragment {
                         is State.Success -> {
                             state.data?.let { movies ->
                                 loadingBinding.loadingFinished()
-                                moviesAdapter.submitList(movies)
+//                                moviesAdapter.submitList(movies) todo
                             }
                         }
                     }
@@ -98,14 +98,15 @@ class FavoritesFragment : Fragment(), SearchFragment {
     }
 
     override fun onSearchQueryChanged(query: String?) {
-        viewModel.movies.value.data?.let { movies ->
-            searchMovies(
-                query = query,
-                notFoundBinding = notFoundBinding,
-                movies = movies
-            ) { resultList ->
-                moviesAdapter.submitList(resultList)
-            }
-        }
+        // todo
+//        viewModel.movies.value.data?.let { movies ->
+//            searchMovies(
+//                query = query,
+//                notFoundBinding = notFoundBinding,
+//                movies = movies
+//            ) { resultList ->
+//                moviesAdapter.submitList(resultList)
+//            }
+//        }
     }
 }
