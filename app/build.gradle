@@ -55,9 +55,10 @@ dependencies {
     kapt Deps.hiltCompiler
 
     implementation Deps.okHttp
-    implementation Deps.moshi
     implementation Deps.retrofit
-    implementation Deps.retrofitWithMoshi
+    implementation Deps.retrofitGson
+    //    implementation Deps.moshi
+//    implementation Deps.retrofitWithMoshi
 
     implementation Deps.navigationUi
     implementation Deps.navigationFragment
