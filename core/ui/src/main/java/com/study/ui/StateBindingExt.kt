@@ -23,10 +23,12 @@ fun StateLoadingBinding.errorOccurred(error: Throwable, tryAgainAction: () -> Un
     val message = when (error) {
         is ConnectionLostException -> {
             ivError.setImageResource(R.drawable.ic_connection_lost)
+            ivError.isVisible = true
             root.context.getString(R.string.error_connection_lost)
         }
         is NetworkException -> {
             ivError.setImageResource(R.drawable.ic_connection_lost)
+            ivError.isVisible = true
             root.context.getString(R.string.error_network, error.code)
         }
         else -> root.context.getString(R.string.error_unknown)

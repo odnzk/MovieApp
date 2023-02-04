@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.study.common.State
 import com.study.presentation.databinding.FragmentPopularMoviesBinding
 import com.study.presentation.movies.recycler.MovieAdapter
+import com.study.presentation.movies.recycler.PopularMoviesEvent
 import com.study.presentation.movies.recycler.SimpleVerticalDividerItemDecorator
 import com.study.presentation.navigation.fromMoviesToDetailedMovie
 import com.study.ui.R
@@ -63,7 +64,7 @@ class PopularMoviesFragment : Fragment() {
                         is State.Loading -> loadingBinding.loadingStarted()
                         is State.Error -> state.error?.let { error ->
                             loadingBinding.errorOccurred(error) {
-                                // todo try again
+                                viewModel.onEvent(PopularMoviesEvent.TryAgain)
                             }
                         }
                         is State.Success -> {
