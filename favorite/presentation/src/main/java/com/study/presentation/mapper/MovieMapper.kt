@@ -6,6 +6,8 @@ import com.study.domain.model.Movie
 import com.study.presentation.model.UiMovie
 import java.io.ByteArrayOutputStream
 
+internal fun List<Movie>.toUiMovies(): List<UiMovie> = map { it.toUiMovie() }
+internal fun List<UiMovie>.toMovies(): List<Movie> = map { it.toMovie() }
 
 internal fun Movie.toUiMovie(): UiMovie {
     val bitmap: Bitmap? =
