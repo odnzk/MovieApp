@@ -9,9 +9,8 @@ java {
 }
 
 dependencies {
-    // coroutines
+    implementation project(path: ':core:common')
+
     implementation Deps.coroutinesCore
     implementation Deps.retrofit
-
-    implementation project(path: ':core:common')
 }

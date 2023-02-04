@@ -5,8 +5,9 @@ import com.study.data.mappers.toMovie
 import com.study.data.mappers.toMovies
 import com.study.domain.model.Movie
 import com.study.domain.repository.MovieRepository
+import javax.inject.Inject
 
-class MovieRepositoryImpl(
+class MovieRepositoryImpl @Inject constructor(
     private val api: MoviesApi
 ) : MovieRepository {
 

@@ -22,6 +22,7 @@ object Versions {
     const val coilVersion = "2.2.2"
     const val retrofitVersion = "2.9.0"
     const val okHttpVersion = "4.10.0"
+    const val moshiVersion = "1.14.0"
 }
 
 object Deps {
@@ -72,11 +73,10 @@ object Deps {
 
     const val workmanagerRuntime = "androidx.work:work-runtime-ktx:${Versions.workVersion}"
 
-    //    const val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
-//    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glideVersion}"
     const val coil = "io.coil-kt:coil:${Versions.coilVersion}"
-
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttpVersion}"
+    const val moshi = "com.squareup.moshi:moshi-kotlin:${Versions.moshiVersion}"
+    const val retrofitWithMoshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofitVersion}"
 }
 

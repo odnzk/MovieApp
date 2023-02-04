@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -49,5 +51,8 @@ dependencies {
     implementation Deps.coil
     implementation Deps.lifecycleViewmodel
     implementation Deps.fragment
+
+    implementation Deps.hilt
+    kapt Deps.hiltCompiler
 
 }
