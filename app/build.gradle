@@ -32,6 +32,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures{
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -55,6 +58,9 @@ dependencies {
     implementation Deps.moshi
     implementation Deps.retrofit
     implementation Deps.retrofitWithMoshi
+
+    implementation Deps.navigationUi
+    implementation Deps.navigationFragment
 }
 // Allow references to generated code
 kapt {
