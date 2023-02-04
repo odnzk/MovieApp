@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.study.movieapp.databinding.ActivityMainBinding
@@ -29,17 +28,18 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         val navController: NavController = navHostFragment.navController
-        val appBarConfiguration = AppBarConfiguration(
-            topLevelDestinationIds = setOf( // todo
-                R.id.popular_graph, R.id.favorite_graph
-            ), fallbackOnNavigateUpListener = ::onSupportNavigateUp
-        )
+//        val appBarConfiguration = AppBarConfiguration(
+//            topLevelDestinationIds = setOf( // todo
+//                R.id.popular_graph, R.id.favorite_graph
+//            ), fallbackOnNavigateUpListener = ::onSupportNavigateUp
+//        )
         with(binding) {
             bottomNav.setupWithNavController(navController)
             setSupportActionBar(toolbar)
         }
         setupActionBarWithNavController(
-            navController = navController, configuration = appBarConfiguration
+            navController = navController,
+//            configuration = appBarConfiguration
         )
     }
 }
