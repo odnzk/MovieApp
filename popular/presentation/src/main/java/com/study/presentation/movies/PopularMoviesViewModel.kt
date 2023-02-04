@@ -3,7 +3,7 @@ package com.study.presentation.movies
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.study.common.State
-import com.study.common.Movie
+import com.study.domain.model.Movie
 import com.study.domain.usecase.MovieUsecases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

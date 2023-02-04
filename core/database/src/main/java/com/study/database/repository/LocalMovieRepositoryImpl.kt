@@ -1,10 +1,9 @@
 package com.study.database.repository
 
-import com.study.domain.repository.LocalMovieRepository
-import com.study.common.Movie
 import com.study.database.dao.MovieDao
 import com.study.database.mapper.toEntities
 import com.study.database.mapper.toMovies
+import com.study.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

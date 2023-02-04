@@ -1,7 +1,7 @@
 package com.study.ui.recycler
 
 import androidx.recyclerview.widget.RecyclerView
-import com.study.common.Movie
+import com.study.domain.model.Movie
 import com.study.ui.databinding.ItemMovieBinding
 import com.study.ui.loadImage
 

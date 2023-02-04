@@ -1,9 +1,9 @@
 package com.study.data.mappers
 
-import com.study.common.Movie
 import com.study.data.model.MovieDetailedDto
 import com.study.data.model.MovieDto
 import com.study.domain.model.DetailedMovie
+import com.study.domain.model.Movie
 
 fun MovieDto.toMovie(): Movie = Movie(
     id = filmId,

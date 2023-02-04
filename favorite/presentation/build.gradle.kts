@@ -42,6 +42,7 @@ dependencies {
     implementation(Deps.core)
     implementation(Deps.appCompat)
     implementation(Deps.material)
+    implementation(project(mapOf("path" to ":core:domain")))
     testImplementation(Deps.junitTest)
     androidTestImplementation(Deps.junit)
     androidTestImplementation(Deps.espressoCore)

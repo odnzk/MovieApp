@@ -1,10 +1,11 @@
 package com.study.data.repository
 
-import com.study.common.Movie
+
 import com.study.data.api.MoviesApi
 import com.study.data.mappers.toDetailedMovie
 import com.study.data.mappers.toMovies
 import com.study.domain.model.DetailedMovie
+import com.study.domain.model.Movie
 import com.study.domain.repository.MovieRepository
 import javax.inject.Inject
 

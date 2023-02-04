@@ -13,4 +13,5 @@ dependencies {
 
     implementation Deps.coroutinesCore
     implementation Deps.retrofit
+    implementation project(path: ':core:domain')
 }
