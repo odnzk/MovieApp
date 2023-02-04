@@ -10,6 +10,7 @@
     <string name="rv_countries">Страны:</string>
 
     <string name="try_again">Повторить</string>
+    <string name="not_found">Не найдено</string>
 
     <!--    App Exceptions-->
     <string name="error_general">Произошла ошибка при загрузке данных</string>

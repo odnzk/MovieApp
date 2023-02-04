@@ -46,8 +46,9 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_try_again"
-        style="@style/ButtonTryAgain"
+        style="@style/ButtonPrimary"
         android:layout_marginTop="24dp"
+        android:text="@string/try_again"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
