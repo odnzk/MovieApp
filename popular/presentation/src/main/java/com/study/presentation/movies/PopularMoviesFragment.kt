@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.study.common.SearchFragment
 import com.study.common.State
 import com.study.presentation.databinding.FragmentPopularMoviesBinding
 import com.study.presentation.movies.recycler.MovieAdapter
@@ -26,13 +27,12 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class PopularMoviesFragment : Fragment() {
+class PopularMoviesFragment : Fragment(), SearchFragment {
     private var _binding: FragmentPopularMoviesBinding? = null
     private val binding: FragmentPopularMoviesBinding get() = _binding!!
 
     private var _loadingBinding: StateLoadingBinding? = null
     private val loadingBinding: StateLoadingBinding get() = _loadingBinding!!
-
 
     private val moviesAdapter = MovieAdapter()
     private val viewModel by viewModels<PopularMoviesViewModel>()
@@ -85,6 +85,7 @@ class PopularMoviesFragment : Fragment() {
     ): View {
         _binding = FragmentPopularMoviesBinding.inflate(inflater, container, false)
         _loadingBinding = StateLoadingBinding.bind(binding.root)
+
         setupAdapter()
         return binding.root
     }
@@ -100,6 +101,20 @@ class PopularMoviesFragment : Fragment() {
             onMovieClick = { movieId ->
                 findNavController().fromMoviesToDetailedMovie(movieId)
             }
+        }
+    }
+
+    override fun onSearchQueryChanged(query: String?) {
+        val movies = viewModel.movies.value.data
+        if (!query.isNullOrBlank()) {
+            movies?.let {
+                val filtered = movies.filter { movie ->
+                    movie.title.lowercase().contains(query.lowercase())
+                }
+                moviesAdapter.submitList(filtered)
+            }
+        } else {
+            moviesAdapter.submitList(movies)
         }
     }
 }

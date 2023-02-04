@@ -50,6 +50,7 @@ dependencies {
     implementation project(path: ':popular:data')
     implementation project(path: ':popular:domain')
     implementation project(path: ':popular:presentation')
+    implementation project(path: ':core:common')
 
     implementation Deps.hilt
     kapt Deps.hiltCompiler
