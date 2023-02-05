@@ -12,10 +12,12 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.study.common.State
 import com.study.favorite.databinding.FragmentFavoritesBinding
+import com.study.favorite.mapper.toMovies
+import com.study.favorite.mapper.toUiMovies
+import com.study.favorite.recycler.UiMovieAdapter
 import com.study.ui.*
 import com.study.ui.databinding.StateLoadingBinding
 import com.study.ui.databinding.StateNotFoundBinding
-import com.study.ui.recycler.MovieAdapter
 import com.study.ui.recycler.SimpleVerticalDividerItemDecorator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -32,7 +34,7 @@ class FavoritesFragment : Fragment(), SearchFragment {
     private var _notFoundBinding: StateNotFoundBinding? = null
     private val notFoundBinding: StateNotFoundBinding get() = _notFoundBinding!!
 
-    private val moviesAdapter = MovieAdapter()
+    private val moviesAdapter = UiMovieAdapter()
     private val viewModel by viewModels<FavoriteMoviesViewModel>()
 
     override fun onCreateView(
@@ -100,14 +102,13 @@ class FavoritesFragment : Fragment(), SearchFragment {
     }
 
     override fun onSearchQueryChanged(query: String?) {
-        // todo
         viewModel.movies.value.data?.let { movies ->
             searchMovies(
                 query = query,
                 notFoundBinding = notFoundBinding,
-                movies = movies
+                movies = movies.toMovies() // because we search only by title
             ) { resultList ->
-                moviesAdapter.submitList(resultList)
+                moviesAdapter.submitList(resultList.toUiMovies()) // because we search only by title
             }
         }
     }
