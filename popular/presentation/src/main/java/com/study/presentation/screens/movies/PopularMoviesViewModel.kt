@@ -1,11 +1,11 @@
-package com.study.presentation.movies
+package com.study.presentation.screens.movies
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.study.common.State
 import com.study.domain.usecase.FavoriteMoviesUsecases
 import com.study.domain.usecase.MovieUsecases
-import com.study.presentation.mapper.toUiMovies
+import com.study.presentation.util.mapper.toUiMovies
 import com.study.presentation.model.UiMovie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,4 +1,4 @@
-package com.study.presentation.movies
+package com.study.presentation.screens.movies
 
 import com.study.domain.model.Movie
 

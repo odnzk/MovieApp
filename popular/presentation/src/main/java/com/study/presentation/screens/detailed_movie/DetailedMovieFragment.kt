@@ -1,4 +1,4 @@
-package com.study.presentation.detailed_movie
+package com.study.presentation.screens.detailed_movie
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.study.common.State
 import com.study.domain.model.DetailedMovie
-import com.study.presentation.CanChangeToolbarStyle
+import com.study.presentation.util.mapper.CanChangeToolbarStyle
 import com.study.presentation.databinding.FragmentDetailedMovieBinding
 import com.study.ui.databinding.StateLoadingBinding
 import com.study.ui.errorOccurred

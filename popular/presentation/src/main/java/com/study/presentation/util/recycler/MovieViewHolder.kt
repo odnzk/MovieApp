@@ -1,8 +1,8 @@
-package com.study.presentation.recycler
+package com.study.presentation.util.recycler
 
 import androidx.recyclerview.widget.RecyclerView
 import com.study.domain.model.Movie
-import com.study.presentation.mapper.toMovie
+import com.study.presentation.util.mapper.toMovie
 import com.study.presentation.model.UiMovie
 import com.study.ui.databinding.ItemMovieBinding
 import com.study.ui.loadImage

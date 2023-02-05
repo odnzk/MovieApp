@@ -1,4 +1,4 @@
-package com.study.presentation.detailed_movie
+package com.study.presentation.screens.detailed_movie
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailedMovieViewModel @Inject constructor(
+internal class DetailedMovieViewModel @Inject constructor(
     private val movieUsecases: MovieUsecases,
     savedStateHandle: SavedStateHandle
 ) :

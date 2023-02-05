@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/popularMoviesFragment"
-        android:name="com.study.presentation.movies.PopularMoviesFragment"
+        android:name="com.study.presentation.screens.movies.PopularMoviesFragment"
         android:label="@string/popular_screen_title"
         tools:layout="@layout/fragment_popular_movies">
         <action
@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/detailedMovieFragment"
-        android:name="com.study.presentation.detailed_movie.DetailedMovieFragment"
+        android:name="com.study.presentation.screens.detailed_movie.DetailedMovieFragment"
         android:label=""
         tools:layout="@layout/fragment_detailed_movie" />
 </navigation>

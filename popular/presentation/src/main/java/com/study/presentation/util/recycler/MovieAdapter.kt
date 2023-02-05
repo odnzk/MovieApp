@@ -1,4 +1,4 @@
-package com.study.presentation.recycler
+package com.study.presentation.util.recycler
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

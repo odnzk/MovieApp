@@ -1,4 +1,4 @@
-package com.study.presentation.mapper
+package com.study.presentation.util.mapper
 
 import com.study.domain.model.Movie
 import com.study.presentation.model.UiMovie
