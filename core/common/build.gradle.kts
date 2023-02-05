@@ -8,5 +8,4 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_7
 }
 dependencies {
-    implementation(project(mapOf("path" to ":core:domain")))
 }

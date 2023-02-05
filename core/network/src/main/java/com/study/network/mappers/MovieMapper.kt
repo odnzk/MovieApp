@@ -1,9 +1,9 @@
-package com.study.data.mappers
+package com.study.network.mappers
 
-import com.study.data.model.MovieDetailedDto
-import com.study.data.model.MovieDto
 import com.study.domain.model.DetailedMovie
 import com.study.domain.model.Movie
+import com.study.network.model.MovieDetailedDto
+import com.study.network.model.MovieDto
 
 fun MovieDto.toMovie(): Movie = Movie(
     id = filmId,

@@ -4,7 +4,7 @@ import com.study.domain.model.Movie
 import com.study.presentation.model.UiMovie
 
 internal fun Movie.toUiMovie(isFavorite: Boolean): UiMovie =
-    UiMovie(id, title, genre, year, imageUrl, isFavorite = isFavorite, imageBytes = imageBytes)
+    UiMovie(id, title, genre, year, imageUrl, isFavorite = isFavorite)
 
 internal fun UiMovie.toMovie(): Movie = Movie(id, title, genre, year, imageUrl)
 

@@ -4,6 +4,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.study.favorite.model.UiMovie
 import com.study.ui.databinding.ItemMovieBinding
+import com.study.ui.loadImage
 
 class UiMovieViewHolder(
     private val binding: ItemMovieBinding
@@ -20,7 +21,11 @@ class UiMovieViewHolder(
                 movie.year
             )
             ivFavorite.isVisible = true
-            ivMovieImage.setImageBitmap(movie.imageBitmap)
+
+            ivMovieImage.loadImage(movie.imageUrl) { imageRequest, errorResult ->
+                // onError
+                ivMovieImage.setImageBitmap(movie.imageBitmap)
+            }
         }
     }
 }

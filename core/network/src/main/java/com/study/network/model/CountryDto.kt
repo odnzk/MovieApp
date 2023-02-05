@@ -1,4 +1,4 @@
-package com.study.data.model
+package com.study.network.model
 
 data class CountryDto(
     val country: String // Россия

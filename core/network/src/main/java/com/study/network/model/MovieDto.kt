@@ -1,4 +1,4 @@
-package com.study.data.model
+package com.study.network.model
 
 data class MovieDto(
     val countries: List<CountryDto>,

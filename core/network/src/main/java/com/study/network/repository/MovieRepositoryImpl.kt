@@ -1,9 +1,9 @@
-package com.study.data.repository
+package com.study.network.repository
 
 
-import com.study.data.api.MoviesApi
-import com.study.data.mappers.toDetailedMovie
-import com.study.data.mappers.toMovies
+import com.study.network.api.MoviesApi
+import com.study.network.mappers.toDetailedMovie
+import com.study.network.mappers.toMovies
 import com.study.domain.model.DetailedMovie
 import com.study.domain.model.Movie
 import com.study.domain.repository.MovieRepository

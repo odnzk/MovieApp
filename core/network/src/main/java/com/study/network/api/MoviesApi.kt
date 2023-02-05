@@ -1,7 +1,7 @@
-package com.study.data.api
+package com.study.network.api
 
-import com.study.data.model.MovieDetailedDto
-import com.study.data.model.MoviesListDto
+import com.study.network.model.MovieDetailedDto
+import com.study.network.model.MoviesListDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 
