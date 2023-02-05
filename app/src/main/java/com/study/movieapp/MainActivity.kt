@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         )
         with(binding) {
             bottomNav.setupWithNavController(navController)
+
             setSupportActionBar(toolbar)
         }
         setupActionBarWithNavController(

@@ -18,6 +18,7 @@ import com.study.common.State
 import com.study.presentation.databinding.FragmentPopularMoviesBinding
 import com.study.presentation.model.UiMovie
 import com.study.presentation.screens.detailed_movie.DetailedMovieFragment
+import com.study.presentation.util.SlidingPaneBackPressedCallback
 import com.study.presentation.util.recycler.MovieAdapter
 import com.study.ui.*
 import com.study.ui.databinding.StateLoadingBinding
@@ -60,6 +61,10 @@ class PopularMoviesFragment : Fragment(), SearchFragment<UiMovie> {
         super.onViewCreated(view, savedInstanceState)
 
         notFoundBinding.hide()
+        activity?.onBackPressedDispatcher?.addCallback(
+            viewLifecycleOwner,
+            SlidingPaneBackPressedCallback(binding.slidingPane)
+        )
         initRecyclerView()
         observeMovies()
     }
