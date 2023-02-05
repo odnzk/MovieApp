@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.study.domain.model.Movie
+import com.study.presentation.model.UiMovie
 import com.study.ui.databinding.ItemMovieBinding
 
-class MovieAdapter : ListAdapter<Movie, MovieViewHolder>(MovieItemCallback()) {
+internal class MovieAdapter : ListAdapter<UiMovie, MovieViewHolder>(MovieItemCallback()) {
     var onMovieClick: ((Int) -> Unit)? = null
     var onLongClick: ((Movie) -> Unit)? = null
 

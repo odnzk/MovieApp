@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.study.common.State
 import com.study.presentation.databinding.FragmentPopularMoviesBinding
+import com.study.presentation.mapper.toMovies
+import com.study.presentation.mapper.toUiMovies
 import com.study.presentation.navigation.fromMoviesToDetailedMovie
 import com.study.presentation.recycler.MovieAdapter
 import com.study.ui.*
@@ -120,9 +122,9 @@ class PopularMoviesFragment : Fragment(), SearchFragment {
             searchMovies(
                 query = query,
                 notFoundBinding = notFoundBinding,
-                movies = movies
+                movies = movies.toMovies()
             ) { resultList ->
-                moviesAdapter.submitList(resultList)
+                moviesAdapter.submitList(resultList.toUiMovies())
             }
         }
     }

@@ -2,17 +2,19 @@ package com.study.presentation.recycler
 
 import androidx.recyclerview.widget.RecyclerView
 import com.study.domain.model.Movie
+import com.study.presentation.mapper.toMovie
+import com.study.presentation.model.UiMovie
 import com.study.ui.databinding.ItemMovieBinding
 import com.study.ui.loadImage
 
-class MovieViewHolder(
+internal class MovieViewHolder(
     private val binding: ItemMovieBinding,
     private val onLongClick: ((Movie) -> Unit)? = null,
     private val onMovieClick: ((Int) -> Unit)? = null
 ) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(movie: Movie) {
+    fun bind(movie: UiMovie) {
         with(binding) {
             tvTitle.text = movie.title
             val genres: String = movie.genre
@@ -26,7 +28,7 @@ class MovieViewHolder(
                 onMovieClick?.invoke(movie.id)
             }
             root.setOnLongClickListener {
-                onLongClick?.invoke(movie)
+                onLongClick?.invoke(movie.toMovie())
                 true
             }
 

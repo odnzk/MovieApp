@@ -25,4 +25,8 @@ class FavoriteMovieRepositoryImpl @Inject constructor(private val dao: MovieDao)
     override fun getAll(): Flow<List<Movie>> {
         return dao.getAll().map { list -> list.toMovies() }
     }
+
+    override fun getAllId(): Flow<List<Int>> {
+        return dao.getALlId()
+    }
 }
