@@ -12,8 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.study.common.State
 import com.study.domain.model.DetailedMovie
-import com.study.presentation.util.mapper.CanChangeToolbarStyle
 import com.study.presentation.databinding.FragmentDetailedMovieBinding
+import com.study.presentation.util.mapper.CanChangeToolbarStyle
 import com.study.ui.databinding.StateLoadingBinding
 import com.study.ui.errorOccurred
 import com.study.ui.loadImage
