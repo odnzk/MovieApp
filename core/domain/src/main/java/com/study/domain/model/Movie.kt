@@ -5,7 +5,7 @@ data class Movie(
     val title: String,
     val genre: String,
     val year: Int?,
-    val imageUrl: String?,
+    val imageUrl: String,
     val imageBytes: ByteArray? = null
 ) {
     override fun equals(other: Any?): Boolean {

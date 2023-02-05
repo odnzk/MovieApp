@@ -5,6 +5,6 @@ data class UiMovie(
     val title: String,
     val genre: String,
     val year: Int?,
-    val imageUrl: String?,
+    val imageUrl: String,
     val isFavorite: Boolean = false
 )

@@ -12,7 +12,9 @@ data class MovieEntity(
     val title: String,
     val genre: String,
     val year: Int?,
-    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    @ColumnInfo(name = "image_url")
+    val imageUrl: String,
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB, name = "image_bytes")
     val imageBytes: ByteArray?
 ) {
     companion object {

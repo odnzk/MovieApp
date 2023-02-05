@@ -2,6 +2,7 @@ package com.study.favorite.mapper
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.util.Log
 import com.study.domain.model.Movie
 import com.study.favorite.model.UiMovie
 import java.io.ByteArrayOutputStream
@@ -14,7 +15,7 @@ internal fun Movie.toUiMovie(): UiMovie {
         imageBytes?.let { BitmapFactory.decodeByteArray(it, 0, it.size) }
     return UiMovie(
         id = id, title = title, genre = genre, year = year,
-        imageBitmap = bitmap
+        imageBitmap = bitmap, imageUrl = imageUrl
     )
 }
 
@@ -24,6 +25,6 @@ internal fun UiMovie.toMovie(): Movie {
     val image = stream.toByteArray()
     return Movie(
         id = id, title = title, genre = genre, year = year,
-        imageUrl = null, imageBytes = image
+        imageUrl = imageUrl, imageBytes = image
     )
 }

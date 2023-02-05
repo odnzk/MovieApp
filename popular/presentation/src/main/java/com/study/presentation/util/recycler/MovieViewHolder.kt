@@ -25,7 +25,7 @@ internal class MovieViewHolder(
                 movie.year
             )
 
-            movie.imageUrl?.let { ivMovieImage.loadImage(it) }
+            ivMovieImage.loadImage(movie.imageUrl)
             ivFavorite.isVisible = movie.isFavorite
 
             root.setOnClickListener {

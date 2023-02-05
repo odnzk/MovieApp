@@ -10,13 +10,13 @@ internal fun MovieEntity.toMovie(): Movie {
         title = title,
         genre = genre,
         year = year,
-        imageUrl = null,
+        imageUrl = imageUrl,
         imageBytes = imageBytes
     )
 }
 
 internal fun Movie.toEntity(): MovieEntity = MovieEntity(
-    id = id, imageBytes = imageBytes, title = title, genre = genre, year = year
+    id = id, imageBytes = imageBytes, title = title, genre = genre, year = year, imageUrl = imageUrl
 )
 
 
