@@ -1,4 +1,4 @@
-package com.study.presentation.favorite.model
+package com.study.favorite.model
 
 import android.graphics.Bitmap
 

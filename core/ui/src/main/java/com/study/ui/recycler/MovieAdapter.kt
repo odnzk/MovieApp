@@ -7,7 +7,7 @@ import com.study.domain.model.Movie
 import com.study.ui.databinding.ItemMovieBinding
 
 class MovieAdapter : ListAdapter<Movie, MovieViewHolder>(MovieItemCallback()) {
-    var onMovieClick: ((Int) -> Unit)? = null
+var onMovieClick: ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         return MovieViewHolder(

@@ -1,11 +1,11 @@
-package com.study.presentation.favorite
+package com.study.favorite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.study.common.State
 import com.study.domain.usecase.FavoriteMoviesUsecases
-import com.study.presentation.favorite.mapper.toUiMovies
-import com.study.presentation.favorite.model.UiMovie
+import com.study.favorite.mapper.toUiMovies
+import com.study.favorite.model.UiMovie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

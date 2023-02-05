@@ -1,4 +1,4 @@
-package com.study.presentation.favorite
+package com.study.favorite
 
 sealed interface FavoriteMoviesEvent {
     object TryAgain : FavoriteMoviesEvent

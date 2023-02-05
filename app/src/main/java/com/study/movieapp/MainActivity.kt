@@ -7,12 +7,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.study.ui.SearchFragment
 import com.study.movieapp.databinding.ActivityMainBinding
+import com.study.ui.SearchFragment
 import dagger.hilt.android.AndroidEntryPoint
+import com.study.favorite.R as FavoriteResources
+import com.study.presentation.R as PopularResources
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -26,16 +30,25 @@ class MainActivity : AppCompatActivity() {
         setUpNavigation()
     }
 
+
     private fun setUpNavigation() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         val navController: NavController = navHostFragment.navController
+        val appBarConfiguration = AppBarConfiguration(
+            topLevelDestinationIds = setOf(
+                FavoriteResources.id.favoritesFragment,
+                PopularResources.id.popularMoviesFragment,
+            ),
+            fallbackOnNavigateUpListener = ::onSupportNavigateUp
+        )
         with(binding) {
             bottomNav.setupWithNavController(navController)
             setSupportActionBar(toolbar)
         }
         setupActionBarWithNavController(
-            navController = navController
+            navController = navController,
+            appBarConfiguration
         )
     }
 
@@ -62,4 +75,6 @@ class MainActivity : AppCompatActivity() {
         })
         return super.onCreateOptionsMenu(menu)
     }
+
+    override fun onSupportNavigateUp() = findNavController(R.id.fragment_container).navigateUp()
 }

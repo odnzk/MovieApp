@@ -1,4 +1,4 @@
-package com.study.presentation.favorite
+package com.study.favorite
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,16 +11,17 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.study.common.State
-import com.study.presentation.databinding.FragmentFavoritesBinding
+import com.study.favorite.databinding.FragmentFavoritesBinding
 import com.study.ui.*
 import com.study.ui.databinding.StateLoadingBinding
 import com.study.ui.databinding.StateNotFoundBinding
 import com.study.ui.recycler.MovieAdapter
 import com.study.ui.recycler.SimpleVerticalDividerItemDecorator
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class FavoritesFragment : Fragment(), SearchFragment {
     private var _binding: FragmentFavoritesBinding? = null
     private val binding: FragmentFavoritesBinding get() = _binding!!

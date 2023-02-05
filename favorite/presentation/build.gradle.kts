@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.study.presentation"
+    namespace = "com.study.favorite"
     compileSdk = 33
 
     defaultConfig {

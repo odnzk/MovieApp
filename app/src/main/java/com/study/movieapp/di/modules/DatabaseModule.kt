@@ -2,12 +2,10 @@ package com.study.movieapp.di.modules
 
 import android.app.Application
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.study.database.db.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -19,11 +17,10 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun providesDatabase(@ApplicationContext applicationContext: Application): RoomDatabase =
-        Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java, DATABASE_NAME
-        ).build()
+    fun providesDatabase(app: Application) =
+        Room.databaseBuilder(app, AppDatabase::class.java, DATABASE_NAME)
+            .fallbackToDestructiveMigration()
+            .build()
 
 
     @Provides
