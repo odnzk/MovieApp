@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class FavoriteMoviesViewModel @Inject constructor(
+internal class FavoriteMoviesViewModel @Inject constructor(
     private val favoriteMoviesUsecases: FavoriteMoviesUsecases
 ) : ViewModel() {
 

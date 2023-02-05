@@ -6,7 +6,7 @@ import com.study.favorite.model.UiMovie
 import com.study.ui.databinding.ItemMovieBinding
 import com.study.ui.loadImage
 
-class UiMovieViewHolder(
+internal class UiMovieViewHolder(
     private val binding: ItemMovieBinding
 ) :
     RecyclerView.ViewHolder(binding.root) {
@@ -22,10 +22,16 @@ class UiMovieViewHolder(
             )
             ivFavorite.isVisible = true
 
-            ivMovieImage.loadImage(movie.imageUrl) { imageRequest, errorResult ->
-                // onError
-                ivMovieImage.setImageBitmap(movie.imageBitmap)
-            }
+            ivMovieImage.loadImage(movie.imageUrl,
+                onError = { _, _ ->
+                    pbForMovieImage.isVisible = false
+                    ivMovieImage.setImageBitmap(movie.imageBitmap)
+                },
+                onSuccess = { _, _ ->
+                    pbForMovieImage.isVisible = false
+                }
+            )
         }
     }
+
 }

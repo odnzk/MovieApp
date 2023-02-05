@@ -19,11 +19,8 @@
             <option value="$PROJECT_DIR$/core/network" />
             <option value="$PROJECT_DIR$/core/ui" />
             <option value="$PROJECT_DIR$/favorite" />
-            <option value="$PROJECT_DIR$/favorite/data" />
-            <option value="$PROJECT_DIR$/favorite/domain" />
             <option value="$PROJECT_DIR$/favorite/presentation" />
             <option value="$PROJECT_DIR$/popular" />
-            <option value="$PROJECT_DIR$/popular/data" />
             <option value="$PROJECT_DIR$/popular/domain" />
             <option value="$PROJECT_DIR$/popular/presentation" />
           </set>

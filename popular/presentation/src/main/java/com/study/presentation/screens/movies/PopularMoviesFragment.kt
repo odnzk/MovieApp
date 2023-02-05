@@ -4,18 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.study.common.State
 import com.study.presentation.databinding.FragmentPopularMoviesBinding
 import com.study.presentation.model.UiMovie
-import com.study.presentation.navigation.fromMoviesToDetailedMovie
+import com.study.presentation.screens.detailed_movie.DetailedMovieFragment
+import com.study.presentation.util.SlidingPaneBackPressedCallback
 import com.study.presentation.util.recycler.MovieAdapter
 import com.study.ui.*
 import com.study.ui.databinding.StateLoadingBinding
@@ -58,6 +61,10 @@ class PopularMoviesFragment : Fragment(), SearchFragment<UiMovie> {
         super.onViewCreated(view, savedInstanceState)
 
         notFoundBinding.hide()
+        activity?.onBackPressedDispatcher?.addCallback(
+            viewLifecycleOwner,
+            SlidingPaneBackPressedCallback(binding.slidingPane)
+        )
         initRecyclerView()
         observeMovies()
     }
@@ -107,7 +114,7 @@ class PopularMoviesFragment : Fragment(), SearchFragment<UiMovie> {
     private fun setupAdapter() {
         moviesAdapter.run {
             onMovieClick = { movieId ->
-                findNavController().fromMoviesToDetailedMovie(movieId)
+                openDetails(movieId)
             }
             onLongClick = { movie ->
                 viewModel.onEvent(PopularMoviesEvent.ToFavorite(movie))
@@ -122,7 +129,7 @@ class PopularMoviesFragment : Fragment(), SearchFragment<UiMovie> {
     }
 
     override fun search(query: String?, data: List<UiMovie>) {
-        val filtered = query?.let {
+        val filtered = query?.takeIf { it.isNotBlank() }?.let {
             data.filter { movie ->
                 movie.title.lowercase().contains(query.lowercase())
             }
@@ -133,5 +140,21 @@ class PopularMoviesFragment : Fragment(), SearchFragment<UiMovie> {
             notFoundBinding.hide()
         }
         moviesAdapter.submitList(filtered)
+    }
+
+
+    private fun openDetails(movieId: Int) {
+        childFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace(
+                com.study.presentation.R.id.fragment_pane,
+                DetailedMovieFragment::class.java,
+                bundleOf("movieId" to movieId)
+            )
+            if (binding.slidingPane.isOpen) {
+                setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+            }
+        }
+        binding.slidingPane.open()
     }
 }

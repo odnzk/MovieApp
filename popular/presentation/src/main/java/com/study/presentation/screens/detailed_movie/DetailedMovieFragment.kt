@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -12,7 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.study.common.State
 import com.study.domain.model.DetailedMovie
-import com.study.presentation.util.mapper.CanChangeToolbarStyle
 import com.study.presentation.databinding.FragmentDetailedMovieBinding
 import com.study.ui.databinding.StateLoadingBinding
 import com.study.ui.errorOccurred
@@ -25,7 +24,7 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class DetailedMovieFragment : Fragment(), CanChangeToolbarStyle {
+internal class DetailedMovieFragment : Fragment() {
     private var _binding: FragmentDetailedMovieBinding? = null
     private val binding: FragmentDetailedMovieBinding get() = _binding!!
 
@@ -62,9 +61,19 @@ class DetailedMovieFragment : Fragment(), CanChangeToolbarStyle {
         with(binding) {
             tvTitle.text = movie.title
             tvDescription.text = movie.description
+            tvGenresTitle.isVisible = true
+            ivMovieImage.isVisible = true
+            tvCountriesTitle.isVisible = true
             tvCountries.text = movie.countries.joinToString(separator = ", ")
             tvGenres.text = movie.genres.joinToString(separator = ", ")
-            ivMovieImage.loadImage(movie.imageUrl)
+            ivMovieImage.loadImage(movie.imageUrl,
+                onError = { _, _ ->
+                    pbForMovieImage.isVisible = false
+                },
+                onSuccess = { _, _ ->
+                    pbForMovieImage.isVisible = false
+                }
+            )
         }
     }
 
@@ -75,9 +84,6 @@ class DetailedMovieFragment : Fragment(), CanChangeToolbarStyle {
     ): View {
         _binding = FragmentDetailedMovieBinding.inflate(inflater, container, false)
         _loadingBinding = StateLoadingBinding.bind(binding.root)
-
-        changeToolbarStyle()
-
         return binding.root
     }
 
@@ -85,14 +91,5 @@ class DetailedMovieFragment : Fragment(), CanChangeToolbarStyle {
         super.onDestroyView()
         _loadingBinding = null
         _binding = null
-        returnToolbarStyle()
-    }
-
-    override fun changeToolbarStyle() {
-        (activity as? AppCompatActivity)?.supportActionBar?.hide()
-    }
-
-    override fun returnToolbarStyle() {
-        (activity as? AppCompatActivity)?.supportActionBar?.hide()
     }
 }

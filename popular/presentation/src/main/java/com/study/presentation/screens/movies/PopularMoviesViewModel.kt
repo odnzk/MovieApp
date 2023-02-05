@@ -7,6 +7,7 @@ import com.study.domain.usecase.FavoriteMoviesUsecases
 import com.study.domain.usecase.MovieUsecases
 import com.study.presentation.model.UiMovie
 import com.study.presentation.util.mapper.toUiMovies
+
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -14,7 +15,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class PopularMoviesViewModel @Inject constructor(
+internal class PopularMoviesViewModel @Inject constructor(
     private val movieUsecases: MovieUsecases,
     private val favoriteMoviesUsecases: FavoriteMoviesUsecases
 ) : ViewModel() {
