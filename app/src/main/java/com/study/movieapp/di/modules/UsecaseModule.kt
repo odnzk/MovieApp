@@ -13,9 +13,12 @@ import dagger.hilt.components.SingletonComponent
 object UsecaseModule {
 
     @Provides
-    fun providesMovieUseCases(movieRepository: MovieRepository): MovieUsecases = MovieUsecases(
+    fun providesMovieUseCases(
+        movieRepository: MovieRepository,
+        favoriteMoviesUsecases: FavoriteMoviesUsecases
+    ): MovieUsecases = MovieUsecases(
         getMovieById = GetMovieById(movieRepository),
-        getTopMovies = GetTopMovies(movieRepository)
+        getTopMovies = GetTopMovies(movieRepository, favoriteMoviesUsecases)
     )
 
     @Provides
