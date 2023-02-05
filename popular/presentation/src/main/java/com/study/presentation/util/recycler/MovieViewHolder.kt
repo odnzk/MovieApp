@@ -1,5 +1,6 @@
 package com.study.presentation.util.recycler
 
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.study.domain.model.Movie
 import com.study.presentation.util.mapper.toMovie
@@ -23,7 +24,10 @@ internal class MovieViewHolder(
                 genres,
                 movie.year
             )
+
             movie.imageUrl?.let { ivMovieImage.loadImage(it) }
+            ivFavorite.isVisible = movie.isFavorite
+
             root.setOnClickListener {
                 onMovieClick?.invoke(movie.id)
             }

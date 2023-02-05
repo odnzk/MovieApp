@@ -5,12 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.study.common.State
 import com.study.domain.usecase.FavoriteMoviesUsecases
 import com.study.domain.usecase.MovieUsecases
-import com.study.presentation.util.mapper.toUiMovies
 import com.study.presentation.model.UiMovie
+import com.study.presentation.util.mapper.toUiMovies
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -32,7 +30,7 @@ class PopularMoviesViewModel @Inject constructor(
     private fun loadData() = viewModelScope.launch {
         combine(
             movieUsecases.getTopMovies(),
-            favoriteMoviesUsecases.getFavoriteMoviesIds()
+            favoriteMoviesUsecases.getFavoriteMoviesIds().distinctUntilChanged()
         ) { moviesState, favMoviesIds ->
             when (moviesState) {
                 is State.Error -> moviesState.error?.let { _movies.value = State.Error(it) }
@@ -43,7 +41,7 @@ class PopularMoviesViewModel @Inject constructor(
                     }
                 }
             }
-        }
+        }.collect()
     }
 
     fun onEvent(event: PopularMoviesEvent) = viewModelScope.launch {
