@@ -6,7 +6,7 @@ data class Movie(
     val genre: String,
     val year: Int?,
     val imageUrl: String,
-    val imageBytes: ByteArray? = null
+    var imageBytes: ByteArray? = null
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
