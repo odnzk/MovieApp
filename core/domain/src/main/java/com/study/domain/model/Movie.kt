@@ -1,6 +1,6 @@
 package com.study.domain.model
 
-data class Movie(
+open class Movie(
     val id: Int,
     val title: String,
     val genre: String,

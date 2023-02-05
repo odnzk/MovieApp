@@ -49,6 +49,7 @@ class FavoritesFragment : Fragment(), SearchFragment {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         notFoundBinding.hide()
         initRecyclerView()
         observeFavoriteMovies()
@@ -68,7 +69,7 @@ class FavoritesFragment : Fragment(), SearchFragment {
                         is State.Success -> {
                             state.data?.let { movies ->
                                 loadingBinding.loadingFinished()
-//                                moviesAdapter.submitList(movies) todo
+                                moviesAdapter.submitList(movies)
                             }
                         }
                     }
@@ -100,14 +101,14 @@ class FavoritesFragment : Fragment(), SearchFragment {
 
     override fun onSearchQueryChanged(query: String?) {
         // todo
-//        viewModel.movies.value.data?.let { movies ->
-//            searchMovies(
-//                query = query,
-//                notFoundBinding = notFoundBinding,
-//                movies = movies
-//            ) { resultList ->
-//                moviesAdapter.submitList(resultList)
-//            }
-//        }
+        viewModel.movies.value.data?.let { movies ->
+            searchMovies(
+                query = query,
+                notFoundBinding = notFoundBinding,
+                movies = movies
+            ) { resultList ->
+                moviesAdapter.submitList(resultList)
+            }
+        }
     }
 }

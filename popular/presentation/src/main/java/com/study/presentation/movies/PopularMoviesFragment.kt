@@ -120,20 +120,5 @@ class PopularMoviesFragment : Fragment(), SearchFragment {
                 moviesAdapter.submitList(resultList)
             }
         }
-//        val movies = viewModel.movies.value.data
-//        if (!query.isNullOrBlank()) {
-//            movies?.let {
-//                val filtered = movies.filter { movie ->
-//                    movie.title.lowercase().contains(query.lowercase())
-//                }
-//                moviesAdapter.submitList(filtered)
-//                if (filtered.isEmpty()) {
-//                    notFoundBinding.show()
-//                }
-//            }
-//        } else {
-//            notFoundBinding.hide()
-//            moviesAdapter.submitList(movies)
-//        }
     }
 }
