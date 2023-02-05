@@ -46,7 +46,6 @@ dependencies {
     androidTestImplementation Deps.junit
     androidTestImplementation Deps.espressoCore
 
-    implementation project(path: ':popular:data')
     implementation project(path: ':popular:domain')
     implementation project(path: ':popular:presentation')
     implementation project(path: ':favorite:presentation')

@@ -14,7 +14,7 @@ class GetFavoriteMovies(
     private val localRepository: FavoriteMovieRepository
 ) {
     suspend operator fun invoke(): Flow<List<Movie>> =
-        localRepository.getAllId().map { favoriteIds ->
+        localRepository.getIdsOfAll().map { favoriteIds ->
             try {
                 // because there are a hundred popular movies I get all top movies and then here filter
                 // instead of requesting each movie by ID

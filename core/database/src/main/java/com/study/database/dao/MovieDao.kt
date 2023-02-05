@@ -19,5 +19,5 @@ interface MovieDao {
     fun getAll(): Flow<List<MovieEntity>>
 
     @Query("SELECT id FROM ${MovieEntity.TABLE_NAME}")
-    fun getALlId(): Flow<List<Int>>
+    fun getIdsOfAll(): Flow<List<Int>>
 }

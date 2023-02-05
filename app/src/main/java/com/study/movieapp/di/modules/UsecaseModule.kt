@@ -27,7 +27,6 @@ object UsecaseModule {
     ): FavoriteMoviesUsecases =
         FavoriteMoviesUsecases(
             addToFavoriteMovies = AddToFavoriteMovies(favoriteMoviesRepository),
-            updateFavoriteMovies = UpdateFavoriteMovies(favoriteMoviesRepository),
             deleteFavoriteMovies = DeleteFavoriteMovies(favoriteMoviesRepository),
             getAllFavoriteMovies = GetFavoriteMovies(
                 remoteRepository = movieRepository,

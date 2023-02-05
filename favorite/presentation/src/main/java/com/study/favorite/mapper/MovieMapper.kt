@@ -2,7 +2,6 @@ package com.study.favorite.mapper
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.util.Log
 import com.study.domain.model.Movie
 import com.study.favorite.model.UiMovie
 import java.io.ByteArrayOutputStream

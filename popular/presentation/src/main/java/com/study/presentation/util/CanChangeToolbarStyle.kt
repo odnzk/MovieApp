@@ -1,4 +1,4 @@
-package com.study.presentation.util.mapper
+package com.study.presentation.util
 
 interface CanChangeToolbarStyle {
     fun changeToolbarStyle()

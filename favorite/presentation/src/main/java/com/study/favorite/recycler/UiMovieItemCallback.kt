@@ -3,7 +3,7 @@ package com.study.favorite.recycler
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import com.study.favorite.model.UiMovie
 
-class UiMovieItemCallback : ItemCallback<UiMovie>() {
+internal class UiMovieItemCallback : ItemCallback<UiMovie>() {
 
     override fun areItemsTheSame(oldItem: UiMovie, newItem: UiMovie): Boolean {
         return oldItem.id == newItem.id

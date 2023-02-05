@@ -13,7 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.study.common.State
 import com.study.domain.model.DetailedMovie
 import com.study.presentation.databinding.FragmentDetailedMovieBinding
-import com.study.presentation.util.mapper.CanChangeToolbarStyle
+import com.study.presentation.util.CanChangeToolbarStyle
 import com.study.ui.databinding.StateLoadingBinding
 import com.study.ui.errorOccurred
 import com.study.ui.loadImage
@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class DetailedMovieFragment : Fragment(), CanChangeToolbarStyle {
+internal class DetailedMovieFragment : Fragment(), CanChangeToolbarStyle {
     private var _binding: FragmentDetailedMovieBinding? = null
     private val binding: FragmentDetailedMovieBinding get() = _binding!!
 

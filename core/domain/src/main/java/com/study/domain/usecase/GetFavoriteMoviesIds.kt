@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 class GetFavoriteMoviesIds(private val repository: FavoriteMovieRepository) {
 
-    operator fun invoke(): Flow<List<Int>> = repository.getAllId()
+    operator fun invoke(): Flow<List<Int>> = repository.getIdsOfAll()
 }
