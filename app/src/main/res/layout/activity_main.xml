@@ -9,10 +9,10 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_height="?attr/actionBarSize"
         android:layout_width="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/search_menu" />
 
@@ -21,12 +21,12 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:navGraph="@navigation/main_graph"
-        app:defaultNavHost="true"
         tools:layout="@layout/fragment_popular_movies" />
 
 
@@ -35,8 +35,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:backgroundTint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_menu" />
 
