@@ -1,6 +1,6 @@
 package com.study.presentation.model
 
-internal data class UiMovie(
+data class UiMovie(
     val id: Int,
     val title: String,
     val genre: String,

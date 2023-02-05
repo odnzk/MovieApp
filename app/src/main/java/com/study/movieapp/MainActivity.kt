@@ -67,8 +67,8 @@ class MainActivity : AppCompatActivity() {
                 val navHostFragment: Fragment? =
                     supportFragmentManager.findFragmentById(R.id.fragment_container)
                 navHostFragment?.childFragmentManager?.fragments?.get(0)
-                    ?.takeIf { it is SearchFragment }?.let { searchFragment ->
-                        (searchFragment as SearchFragment).onSearchQueryChanged(p0)
+                    ?.takeIf { it is SearchFragment<*> }?.let { searchFragment ->
+                        (searchFragment as SearchFragment<*>).onSearchQueryChanged(p0)
                     }
                 return false
             }

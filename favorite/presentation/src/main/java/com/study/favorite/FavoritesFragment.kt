@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.study.common.State
 import com.study.favorite.databinding.FragmentFavoritesBinding
 import com.study.favorite.mapper.toMovie
-import com.study.favorite.mapper.toMovies
-import com.study.favorite.mapper.toUiMovies
 import com.study.favorite.model.UiMovie
 import com.study.favorite.recycler.UiMovieAdapter
 import com.study.ui.*
@@ -29,7 +27,7 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class FavoritesFragment : Fragment(), SearchFragment {
+class FavoritesFragment : Fragment(), SearchFragment<UiMovie> {
     private var _binding: FragmentFavoritesBinding? = null
     private val binding: FragmentFavoritesBinding get() = _binding!!
 
@@ -114,14 +112,20 @@ class FavoritesFragment : Fragment(), SearchFragment {
     }
 
     override fun onSearchQueryChanged(query: String?) {
-        viewModel.movies.value.data?.let { movies ->
-            searchMovies(
-                query = query,
-                notFoundBinding = notFoundBinding,
-                movies = movies.toMovies() // because we search only by title
-            ) { resultList ->
-                moviesAdapter.submitList(resultList.toUiMovies()) // because we search only by title
+        viewModel.movies.value.data?.let { movies -> search(query, movies) }
+    }
+
+    override fun search(query: String?, data: List<UiMovie>) {
+        val filtered = query?.let {
+            data.filter { movie ->
+                movie.title.lowercase().contains(query.lowercase())
             }
+        } ?: data
+        if (filtered.isEmpty()) {
+            notFoundBinding.show()
+        } else {
+            notFoundBinding.hide()
         }
+        moviesAdapter.submitList(filtered)
     }
 }

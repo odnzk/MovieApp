@@ -14,8 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.study.common.State
 import com.study.presentation.databinding.FragmentPopularMoviesBinding
-import com.study.presentation.mapper.toMovies
-import com.study.presentation.mapper.toUiMovies
+import com.study.presentation.model.UiMovie
 import com.study.presentation.navigation.fromMoviesToDetailedMovie
 import com.study.presentation.recycler.MovieAdapter
 import com.study.ui.*
@@ -27,7 +26,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class PopularMoviesFragment : Fragment(), SearchFragment {
+class PopularMoviesFragment : Fragment(), SearchFragment<UiMovie> {
     private var _binding: FragmentPopularMoviesBinding? = null
     private val binding: FragmentPopularMoviesBinding get() = _binding!!
 
@@ -112,20 +111,27 @@ class PopularMoviesFragment : Fragment(), SearchFragment {
             }
             onLongClick = { movie ->
                 viewModel.onEvent(PopularMoviesEvent.ToFavorite(movie))
-                Snackbar.make(binding.root, R.string.saved_to_favorites, Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.saved_to_favorites, Snackbar.LENGTH_SHORT)
+                    .show()
             }
         }
     }
 
     override fun onSearchQueryChanged(query: String?) {
-        viewModel.movies.value.data?.let { movies ->
-            searchMovies(
-                query = query,
-                notFoundBinding = notFoundBinding,
-                movies = movies.toMovies()
-            ) { resultList ->
-                moviesAdapter.submitList(resultList.toUiMovies())
+        viewModel.movies.value.data?.let { movies -> search(query, movies) }
+    }
+
+    override fun search(query: String?, data: List<UiMovie>) {
+        val filtered = query?.let {
+            data.filter { movie ->
+                movie.title.lowercase().contains(query.lowercase())
             }
+        } ?: data
+        if (filtered.isEmpty()) {
+            notFoundBinding.show()
+        } else {
+            notFoundBinding.hide()
         }
+        moviesAdapter.submitList(filtered)
     }
 }
