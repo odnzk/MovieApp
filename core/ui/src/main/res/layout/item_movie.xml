@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     android:elevation="12dp"
-    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="@dimen/recycler_view_item_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout

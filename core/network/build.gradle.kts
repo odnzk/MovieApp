@@ -43,14 +43,12 @@ dependencies {
     androidTestImplementation(Deps.junit)
     androidTestImplementation(Deps.espressoCore)
 
-    implementation(project(mapOf("path" to ":core:domain")))
-    implementation(project(mapOf("path" to ":core:common")))
-
+    implementation(project("path" to ":core:domain"))
+    implementation(project("path" to ":core:common"))
 
     implementation(Deps.coroutinesCore)
     implementation(Deps.retrofit)
-
-
+    
     implementation(Deps.hilt)
     kapt(Deps.hiltCompiler)
 }

@@ -116,7 +116,7 @@ class FavoritesFragment : Fragment(), SearchFragment<UiMovie> {
     }
 
     override fun search(query: String?, data: List<UiMovie>) {
-        val filtered = query?.let {
+        val filtered = query?.takeIf { it.isNotBlank() }?.let {
             data.filter { movie ->
                 movie.title.lowercase().contains(query.lowercase())
             }

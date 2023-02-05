@@ -14,6 +14,7 @@ fun ImageView.loadImage(
     onSuccess: ((ImageRequest, SuccessResult) -> Unit)? = null
 ) {
     load(url) {
+        placeholder(R.drawable.ic_loading)
         transformations()
         scale(Scale.FILL)
         diskCachePolicy(CachePolicy.ENABLED)

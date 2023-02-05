@@ -65,8 +65,8 @@ dependencies {
     implementation Deps.navigationUi
     implementation Deps.navigationFragment
 
-    implementation(Deps.room)
-    kapt(Deps.roomCompiler)
+    implementation Deps.room
+    kapt Deps.roomCompiler
 }
 // Allow references to generated code
 kapt {
