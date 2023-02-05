@@ -1,123 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
     android:theme="@style/Theme.MovieApp">
 
-    <ImageView
-        android:id="@+id/iv_movie_image"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:contentDescription="@string/cd_movie_poster"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/screen_detaild_paddings">
 
-    <androidx.core.widget.ContentLoadingProgressBar
-        android:id="@+id/pb_for_movie_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/iv_movie_image"
-        app:layout_constraintEnd_toEndOf="@id/iv_movie_image"
-        app:layout_constraintStart_toStartOf="@id/iv_movie_image"
-        app:layout_constraintTop_toTopOf="@id/iv_movie_image" />
+        <ImageView
+            android:id="@+id/iv_movie_image"
+            android:layout_width="0dp"
+            android:layout_height="500dp"
+            android:contentDescription="@string/cd_movie_poster"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars"
+            tools:visibility="visible" />
 
-    <include layout="@layout/state_loading" />
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/pb_for_movie_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/iv_movie_image"
+            app:layout_constraintEnd_toEndOf="@id/iv_movie_image"
+            app:layout_constraintStart_toStartOf="@id/iv_movie_image"
+            app:layout_constraintTop_toTopOf="@id/iv_movie_image" />
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_movie_image">
+        <include layout="@layout/state_loading" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="@dimen/screen_detaild_paddings">
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/screen_detaild_paddings"
+            android:layout_marginTop="20dp"
+            android:textAppearance="@style/TextAppearance.MovieApp.Title1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_movie_image"
+            tools:text="Изгой-один: Звёздные войны" />
 
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/screen_detaild_paddings"
-                android:layout_marginTop="20dp"
-                android:textAppearance="@style/TextAppearance.MovieApp.Title1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Изгой-один: Звёздные войны" />
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/screen_detaild_paddings"
+            android:layout_marginTop="16dp"
+            android:textAppearance="@style/TextAppearance.MovieApp.Regular1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tools:text="Сопротивление собирает отряд для выполнения особой миссии - надо выкрасть чертежи самого совершенного и мертоносного оружия Империи. Не всем суждено вернуться домой, но герои готовы к этому, ведь на кону судьба Галактики" />
 
-            <TextView
-                android:id="@+id/tv_description"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/screen_detaild_paddings"
-                android:layout_marginTop="16dp"
-                android:textAppearance="@style/TextAppearance.MovieApp.Regular1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_title"
-                tools:text="Сопротивление собирает отряд для выполнения особой миссии - надо выкрасть чертежи самого совершенного и мертоносного оружия Империи. Не всем суждено вернуться домой, но герои готовы к этому, ведь на кону судьба Галактики" />
+        <TextView
+            android:id="@+id/tv_genres_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/screen_detaild_paddings"
+            android:layout_marginTop="16dp"
+            android:text="@string/rv_genres"
+            android:textAppearance="@style/TextAppearance.MovieApp.Regular1"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_description"
+            tools:visibility="visible" />
 
-            <TextView
-                android:id="@+id/tv_genres_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/screen_detaild_paddings"
-                android:layout_marginTop="16dp"
-                android:text="@string/rv_genres"
-                android:textAppearance="@style/TextAppearance.MovieApp.Regular1"
-                android:textStyle="bold"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_description"
-                tools:visibility="visible" />
+        <TextView
+            android:id="@+id/tv_genres"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="@dimen/screen_detaild_paddings"
+            android:textAppearance="@style/TextAppearance.MovieApp.Regular1"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_genres_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_genres_title"
+            tools:text="Жанры: фантастика, приключения" />
 
-            <TextView
-                android:id="@+id/tv_genres"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="@dimen/screen_detaild_paddings"
-                android:textAppearance="@style/TextAppearance.MovieApp.Regular1"
-                app:layout_constraintBaseline_toBaselineOf="@id/tv_genres_title"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_genres_title"
-                tools:text="Жанры: фантастика, приключения" />
+        <TextView
+            android:id="@+id/tv_countries_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/screen_detaild_paddings"
+            android:layout_marginTop="8dp"
+            android:text="@string/rv_countries"
+            android:textAppearance="@style/TextAppearance.MovieApp.Regular1"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_genres"
+            tools:visibility="visible" />
 
-            <TextView
-                android:id="@+id/tv_countries_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/screen_detaild_paddings"
-                android:layout_marginTop="8dp"
-                android:text="@string/rv_countries"
-                android:textAppearance="@style/TextAppearance.MovieApp.Regular1"
-                android:textStyle="bold"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_genres"
-                tools:visibility="visible" />
+        <TextView
+            android:id="@+id/tv_countries"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="@dimen/screen_detaild_paddings"
+            android:textAppearance="@style/TextAppearance.MovieApp.Regular1"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_countries_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_countries_title"
+            tools:text="США" />
 
-            <TextView
-                android:id="@+id/tv_countries"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="@dimen/screen_detaild_paddings"
-                android:textAppearance="@style/TextAppearance.MovieApp.Regular1"
-                app:layout_constraintBaseline_toBaselineOf="@id/tv_countries_title"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_countries_title"
-                tools:text="США" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

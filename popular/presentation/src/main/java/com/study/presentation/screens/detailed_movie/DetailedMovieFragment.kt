@@ -62,6 +62,7 @@ internal class DetailedMovieFragment : Fragment() {
             tvTitle.text = movie.title
             tvDescription.text = movie.description
             tvGenresTitle.isVisible = true
+            ivMovieImage.isVisible = true
             tvCountriesTitle.isVisible = true
             tvCountries.text = movie.countries.joinToString(separator = ", ")
             tvGenres.text = movie.genres.joinToString(separator = ", ")
