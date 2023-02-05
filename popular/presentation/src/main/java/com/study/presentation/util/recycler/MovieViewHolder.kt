@@ -25,8 +25,16 @@ internal class MovieViewHolder(
                 movie.year
             )
 
-            ivMovieImage.loadImage(movie.imageUrl)
             ivFavorite.isVisible = movie.isFavorite
+
+            ivMovieImage.loadImage(movie.imageUrl,
+                onError = { _, _ ->
+                    pbForMovieImage.isVisible = false
+                },
+                onSuccess = { _, _ ->
+                    pbForMovieImage.isVisible = false
+                }
+            )
 
             root.setOnClickListener {
                 onMovieClick?.invoke(movie.id)

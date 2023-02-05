@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -64,7 +65,14 @@ internal class DetailedMovieFragment : Fragment(), CanChangeToolbarStyle {
             tvDescription.text = movie.description
             tvCountries.text = movie.countries.joinToString(separator = ", ")
             tvGenres.text = movie.genres.joinToString(separator = ", ")
-            ivMovieImage.loadImage(movie.imageUrl)
+            ivMovieImage.loadImage(movie.imageUrl,
+                onError = { _, _ ->
+                    pbForMovieImage.isVisible = false
+                },
+                onSuccess = { _, _ ->
+                    pbForMovieImage.isVisible = false
+                }
+            )
         }
     }
 

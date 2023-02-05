@@ -22,10 +22,16 @@ internal class UiMovieViewHolder(
             )
             ivFavorite.isVisible = true
 
-            ivMovieImage.loadImage(movie.imageUrl) { _,_ ->
-                // onError
-                ivMovieImage.setImageBitmap(movie.imageBitmap)
-            }
+            ivMovieImage.loadImage(movie.imageUrl,
+                onError = { _, _ ->
+                    pbForMovieImage.isVisible = false
+                    ivMovieImage.setImageBitmap(movie.imageBitmap)
+                },
+                onSuccess = { _, _ ->
+                    pbForMovieImage.isVisible = false
+                }
+            )
         }
     }
+
 }
