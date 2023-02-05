@@ -38,6 +38,9 @@ class FavoriteMoviesViewModel @Inject constructor(
     fun onEvent(event: FavoriteMoviesEvent) = viewModelScope.launch {
         when (event) {
             FavoriteMoviesEvent.TryAgain -> loadData()
+            is FavoriteMoviesEvent.RemoveFromFavorite -> favoriteMoviesUsecases.deleteFavoriteMovies(
+                event.movie
+            )
         }
     }
 }

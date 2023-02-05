@@ -9,19 +9,24 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.study.common.State
 import com.study.favorite.databinding.FragmentFavoritesBinding
+import com.study.favorite.mapper.toMovie
 import com.study.favorite.mapper.toMovies
 import com.study.favorite.mapper.toUiMovies
+import com.study.favorite.model.UiMovie
 import com.study.favorite.recycler.UiMovieAdapter
 import com.study.ui.*
 import com.study.ui.databinding.StateLoadingBinding
 import com.study.ui.databinding.StateNotFoundBinding
 import com.study.ui.recycler.SimpleVerticalDividerItemDecorator
+import com.study.ui.recycler.SwipeCallback
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+
 
 @AndroidEntryPoint
 class FavoritesFragment : Fragment(), SearchFragment {
@@ -83,6 +88,13 @@ class FavoritesFragment : Fragment(), SearchFragment {
     private fun initRecyclerView() {
         with(binding.rvFavorites) {
             layoutManager = LinearLayoutManager(context)
+            val swipeCallback = SwipeCallback(moviesAdapter) { uimovie ->
+                (uimovie as? UiMovie)?.toMovie()?.also {
+                    viewModel.onEvent(FavoriteMoviesEvent.RemoveFromFavorite(it))
+                }
+            }
+            val itemTouchHelper = ItemTouchHelper(swipeCallback)
+            itemTouchHelper.attachToRecyclerView(this)
             addItemDecoration(
                 SimpleVerticalDividerItemDecorator
                     (
