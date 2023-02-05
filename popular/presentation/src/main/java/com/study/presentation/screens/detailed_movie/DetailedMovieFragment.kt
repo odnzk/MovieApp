@@ -63,6 +63,8 @@ internal class DetailedMovieFragment : Fragment(), CanChangeToolbarStyle {
         with(binding) {
             tvTitle.text = movie.title
             tvDescription.text = movie.description
+            tvGenresTitle.isVisible = true
+            tvCountriesTitle.isVisible = true
             tvCountries.text = movie.countries.joinToString(separator = ", ")
             tvGenres.text = movie.genres.joinToString(separator = ", ")
             ivMovieImage.loadImage(movie.imageUrl,
