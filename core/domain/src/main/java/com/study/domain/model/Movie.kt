@@ -32,8 +32,8 @@ data class Movie(
         result = 31 * result + title.hashCode()
         result = 31 * result + genre.hashCode()
         result = 31 * result + (year ?: 0)
-        result = 31 * result + (imageUrl?.hashCode() ?: 0)
-        result = 31 * result + (imageBytes?.contentHashCode() ?: 0)
+        result = 31 * result + imageUrl.hashCode()
+        result = 31 * result + imageBytes.contentHashCode()
         return result
     }
 }

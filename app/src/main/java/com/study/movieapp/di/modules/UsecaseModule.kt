@@ -14,21 +14,26 @@ object UsecaseModule {
 
     @Provides
     fun providesMovieUseCases(
-        movieRepository: MovieRepository,
-        favoriteMoviesUsecases: FavoriteMoviesUsecases
+        movieRepository: MovieRepository
     ): MovieUsecases = MovieUsecases(
         getMovieById = GetMovieById(movieRepository),
-        getTopMovies = GetTopMovies(movieRepository, favoriteMoviesUsecases)
+        getTopMovies = GetTopMovies(movieRepository)
     )
 
     @Provides
-    fun providesFavoriteMovieUseCases(movieRepository: FavoriteMovieRepository): FavoriteMoviesUsecases =
+    fun providesFavoriteMovieUseCases(
+        favoriteMoviesRepository: FavoriteMovieRepository,
+        movieRepository: MovieRepository
+    ): FavoriteMoviesUsecases =
         FavoriteMoviesUsecases(
-            addToFavoriteMovies = AddToFavoriteMovies(movieRepository),
-            updateFavoriteMovies = UpdateFavoriteMovies(movieRepository),
-            deleteFavoriteMovies = DeleteFavoriteMovies(movieRepository),
-            getAllFavoriteMovies = GetAllFavoriteMovies(movieRepository),
-            getFavoriteMoviesIds = GetFavoriteMoviesIds(movieRepository)
+            addToFavoriteMovies = AddToFavoriteMovies(favoriteMoviesRepository),
+            updateFavoriteMovies = UpdateFavoriteMovies(favoriteMoviesRepository),
+            deleteFavoriteMovies = DeleteFavoriteMovies(favoriteMoviesRepository),
+            getAllFavoriteMovies = GetFavoriteMovies(
+                remoteRepository = movieRepository,
+                localRepository = favoriteMoviesRepository
+            ),
+            getFavoriteMoviesIds = GetFavoriteMoviesIds(favoriteMoviesRepository)
         )
 
 }

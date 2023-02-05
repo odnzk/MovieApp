@@ -45,8 +45,6 @@ dependencies {
     androidTestImplementation Deps.junit
     androidTestImplementation Deps.espressoCore
 
-    implementation project(path: ':popular:domain')
-
     implementation Deps.coil
 
 }

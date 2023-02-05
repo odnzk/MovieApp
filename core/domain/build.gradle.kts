@@ -9,5 +9,7 @@ java {
 }
 
 dependencies {
+    implementation(project(mapOf("path" to ":core:common")))
     implementation(Deps.coroutinesCore)
+    implementation(Deps.retrofit)
 }

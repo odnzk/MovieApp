@@ -8,4 +8,8 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_7
 }
 
+dependencies {
+}
+
+
 

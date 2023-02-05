@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.study.database"
+    namespace = "com.study.network"
     compileSdk = 33
 
     defaultConfig {
@@ -46,8 +46,10 @@ dependencies {
     implementation(project(mapOf("path" to ":core:domain")))
     implementation(project(mapOf("path" to ":core:common")))
 
-    implementation(Deps.room)
-    kapt(Deps.roomCompiler)
+
+    implementation(Deps.coroutinesCore)
+    implementation(Deps.retrofit)
+
 
     implementation(Deps.hilt)
     kapt(Deps.hiltCompiler)

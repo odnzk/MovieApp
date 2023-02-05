@@ -1,6 +1,6 @@
 package com.study.movieapp.di.modules
 
-import com.study.data.api.MoviesApi
+import com.study.network.api.MoviesApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
