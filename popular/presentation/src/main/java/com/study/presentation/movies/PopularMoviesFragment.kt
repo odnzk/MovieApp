@@ -11,13 +11,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.study.common.State
 import com.study.presentation.databinding.FragmentPopularMoviesBinding
 import com.study.presentation.navigation.fromMoviesToDetailedMovie
+import com.study.presentation.recycler.MovieAdapter
 import com.study.ui.*
 import com.study.ui.databinding.StateLoadingBinding
 import com.study.ui.databinding.StateNotFoundBinding
-import com.study.ui.recycler.MovieAdapter
 import com.study.ui.recycler.SimpleVerticalDividerItemDecorator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -106,6 +107,10 @@ class PopularMoviesFragment : Fragment(), SearchFragment {
         moviesAdapter.run {
             onMovieClick = { movieId ->
                 findNavController().fromMoviesToDetailedMovie(movieId)
+            }
+            onLongClick = { movie ->
+                viewModel.onEvent(PopularMoviesEvent.ToFavorite(movie))
+                Snackbar.make(binding.root, R.string.saved_to_favorites, Snackbar.LENGTH_SHORT).show()
             }
         }
     }

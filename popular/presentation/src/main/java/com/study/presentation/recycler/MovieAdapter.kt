@@ -1,4 +1,4 @@
-package com.study.ui.recycler
+package com.study.presentation.recycler
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,11 +8,13 @@ import com.study.ui.databinding.ItemMovieBinding
 
 class MovieAdapter : ListAdapter<Movie, MovieViewHolder>(MovieItemCallback()) {
     var onMovieClick: ((Int) -> Unit)? = null
+    var onLongClick: ((Movie) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         return MovieViewHolder(
             binding = ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false),
-            onMovieClick = onMovieClick
+            onMovieClick = onMovieClick,
+            onLongClick = onLongClick
         )
     }
 

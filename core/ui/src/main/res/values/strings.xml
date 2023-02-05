@@ -11,6 +11,7 @@
 
     <string name="try_again">Повторить</string>
     <string name="not_found">Не найдено</string>
+    <string name="saved_to_favorites">Добавлено в избранное</string>
 
     <!--    App Exceptions-->
     <string name="error_general">Произошла ошибка при загрузке данных</string>

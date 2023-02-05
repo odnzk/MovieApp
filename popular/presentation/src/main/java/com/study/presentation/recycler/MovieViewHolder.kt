@@ -1,4 +1,4 @@
-package com.study.ui.recycler
+package com.study.presentation.recycler
 
 import androidx.recyclerview.widget.RecyclerView
 import com.study.domain.model.Movie
@@ -7,6 +7,7 @@ import com.study.ui.loadImage
 
 class MovieViewHolder(
     private val binding: ItemMovieBinding,
+    private val onLongClick: ((Movie) -> Unit)? = null,
     private val onMovieClick: ((Int) -> Unit)? = null
 ) :
     RecyclerView.ViewHolder(binding.root) {
@@ -21,9 +22,15 @@ class MovieViewHolder(
                 movie.year
             )
             movie.imageUrl?.let { ivMovieImage.loadImage(it) }
-            onMovieClick?.let { onMovieClick ->
-                root.setOnClickListener { onMovieClick(movie.id) }
+            root.setOnClickListener {
+                onMovieClick?.invoke(movie.id)
             }
+            root.setOnLongClickListener {
+                onLongClick?.invoke(movie)
+                true
+            }
+
         }
     }
+
 }
