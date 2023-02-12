@@ -1,6 +1,6 @@
 # MovieApp [in progress]
 
-## Функционал
+## Features
 - [X] Modularization
 - [X] Clean Architecture
 - [X] Single Activity Application
