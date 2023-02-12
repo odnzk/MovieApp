@@ -2,7 +2,7 @@ package com.study.presentation.util.recycler
 
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.study.domain.model.Movie
+import com.study.domain.model.movie.Movie
 import com.study.presentation.model.UiMovie
 import com.study.presentation.util.mapper.toMovie
 import com.study.ui.databinding.ItemMovieBinding

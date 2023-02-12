@@ -3,7 +3,7 @@ package com.study.domain.usecase
 import com.study.common.State
 import com.study.domain.exceptions.ConnectionLostException
 import com.study.domain.exceptions.NetworkException
-import com.study.domain.model.DetailedMovie
+import com.study.domain.model.movie.DetailedMovie
 import com.study.domain.repository.MovieRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

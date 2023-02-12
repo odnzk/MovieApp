@@ -3,7 +3,7 @@ package com.study.presentation.util.recycler
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.study.domain.model.Movie
+import com.study.domain.model.movie.Movie
 import com.study.presentation.model.UiMovie
 import com.study.ui.databinding.ItemMovieBinding
 

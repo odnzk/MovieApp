@@ -1,6 +1,6 @@
 package com.study.domain.usecase
 
-import com.study.domain.model.Movie
+import com.study.domain.model.movie.Movie
 import com.study.domain.repository.FavoriteMovieRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

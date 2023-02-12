@@ -1,28 +1,47 @@
 package com.study.network.mappers
 
-import com.study.domain.model.DetailedMovie
-import com.study.domain.model.Movie
+import com.study.domain.model.movie.DetailedMovie
+import com.study.domain.model.movie.Movie
+import com.study.domain.model.movie.details.MovieDetails
+import com.study.domain.model.movie.values.Id
 import com.study.network.model.MovieDetailedDto
 import com.study.network.model.MovieDto
+import com.study.network.utils.capitalizeOrEmpty
 
-fun MovieDto.toMovie(): Movie = Movie(
-    id = filmId,
-    title = nameRu.capitalize(),
-    genre = genres[0].genre.capitalize(),
-    year = year.toIntOrNull(),
-    imageUrl = posterUrlPreview
-)
+// todo handle invalid id exception
+internal fun MovieDto.toMovie(): Movie? {
+    val id = filmId?.let { Id.of(it) }
+    return if (id?.isSuccess == true) {
+        Movie(
+            id = id.getOrThrow(),
+            title = nameRu.capitalizeOrEmpty(),
+            genres = genres.toGenreStrings(),
+            year = year ?: UNKNOWN_VALUE,
+            moviePoster = toMoviePoster()
+        )
+    } else null
+}
 
-fun List<MovieDto>.toMovies(): List<Movie> = map { it.toMovie() }
+// todo handle invalid id exception
+internal fun MovieDetailedDto.toDetailedMovie(): DetailedMovie? {
+    val id = kinopoiskId?.let { Id.of(it) }
+    return if (id?.isSuccess == true) {
+        DetailedMovie(
+            id = id.getOrThrow(),
+            title = nameRu?.capitalizeOrEmpty().orEmpty(),
+            genres = genres.toGenreStrings(),
+            year = year ?: UNKNOWN_VALUE,
+            moviePoster = toMoviePoster(),
+            movieDetails = MovieDetails(
+                description = description.capitalizeOrEmpty(),
+                countries = countries.toCountryStrings()
+            )
+        )
+    } else null
+}
 
-fun MovieDetailedDto.toDetailedMovie(): DetailedMovie =
-    DetailedMovie(
-        id = kinopoiskId,
-        imageUrl = posterUrl,
-        title = nameRu.capitalize(),
-        genres = genres.map { it.genre },
-        countries = countries.map { it.country.capitalize() },
-        description = description.capitalize(),
-    )
 
-private fun String.capitalize() = replaceFirstChar { char -> char.uppercaseChar() }
+internal fun List<MovieDto>?.toMovies(): List<Movie> =
+    this?.mapNotNull { it.toMovie() } ?: emptyList()
+
+private const val UNKNOWN_VALUE = -1

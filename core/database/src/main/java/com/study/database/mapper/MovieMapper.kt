@@ -2,7 +2,7 @@ package com.study.database.mapper
 
 
 import com.study.database.entity.MovieEntity
-import com.study.domain.model.Movie
+import com.study.domain.model.movie.Movie
 
 internal fun MovieEntity.toMovie(): Movie {
     return Movie(

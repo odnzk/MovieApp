@@ -1,6 +1,6 @@
 package com.study.domain.repository
 
-import com.study.domain.model.Movie
+import com.study.domain.model.movie.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface FavoriteMovieRepository {

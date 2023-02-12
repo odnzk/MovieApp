@@ -1,6 +1,6 @@
 package com.study.presentation.util.mapper
 
-import com.study.domain.model.Movie
+import com.study.domain.model.movie.Movie
 import com.study.presentation.model.UiMovie
 
 internal fun Movie.toUiMovie(isFavorite: Boolean): UiMovie =
