@@ -1,4 +1,4 @@
-# MovieApp [in progress]
+# MovieApp 
 
 ## Features
 - [X] Modularization
